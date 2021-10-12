@@ -3,6 +3,6 @@
 GitHub id        Member's name
 
 yangzhang2021    Yang Zhang
-Zizhao Guan      Zizhao Guan
+zizhaoguan      Zizhao Guan
 Yancheng Chu     Yancheng Chu
 </pre>
