@@ -1,9 +1,16 @@
 package com.spiderman.backendAPI.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 public class Comment implements Serializable {
     @Id
@@ -12,46 +19,30 @@ public class Comment implements Serializable {
     private Long id;
     private Date time;
     private String content;
+    private Long iBlogID;
+    private Long iListID;
+    private Long userID;
 
-    public Comment() {
-    }
 
-    public Comment(Long id, Date time, String content) {
-        this.id = id;
+    public Comment(Date time, String content,
+                   Long iBlogID, Long iListID,
+                   Long userID) {
         this.time = time;
         this.content = content;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+        this.iBlogID = iBlogID;
+        this.iListID = iListID;
+        this.userID = userID;
     }
 
     @Override
     public String toString() {
         return "Img{" +
-                "id=" + id +
-                ", time=" + time +
-                ", content='" + content + '\'' +
+                "id=" + this.id +
+                ", time=" + this.time +
+                ", content='" + this.content + '\'' +
+                ", iBlogID='" + this.iBlogID + '\'' +
+                ", iListID='" + this.iListID + '\'' +
+                ", userID='" + this.userID + '\'' +
                 '}';
     }
 }
