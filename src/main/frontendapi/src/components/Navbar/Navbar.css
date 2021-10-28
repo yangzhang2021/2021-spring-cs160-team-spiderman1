@@ -1,6 +1,10 @@
 :root{
-  --primary-green: rgb(19, 104, 85);
-  --primary-black:#000;
+  --light-green: #9ABAA5;
+  --light-yellow: #E9C46A;
+  --light-orange:#E9A56C;
+  --light-blue:#4095c2;
+  --light-gray:#707070;
+  --primary-black:#3E353A;
   --primary-white:#fff;
   --secondary-green:rgb(37, 119, 101);
 }
@@ -13,7 +17,9 @@
   align-items: center;
   font-size: 1.2rem;
 }
-
+.navbar .active{
+  
+}
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -32,7 +38,7 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 
@@ -46,15 +52,17 @@
   list-style: none;
   text-align: center;
   justify-content: end;
+  width: 100%;
 }
 
 .nav-item {
   height: 80px;
   border-bottom: 2px solid transparent;
+  margin-left: 30px;
 }
 
 .nav-item:hover {
-  border-bottom: 2px solid var(--primary-green);
+  border-bottom: 2px solid var(--light-green);
 }
 
 .nav-links {
@@ -88,9 +96,10 @@
   }
 
   .nav-menu.active {
-    background:var(--secondary-green);
+    background:var(--light-green);
     left: 0;
     opacity: 1;
+    height: 80%;
   }
 
   .nav-links {

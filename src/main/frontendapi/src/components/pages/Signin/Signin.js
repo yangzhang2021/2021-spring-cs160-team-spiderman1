@@ -1,9 +1,9 @@
 import React, {useState, useEffect}from 'react';
-import './Signup.css'
+import '../Signup/Signup.css'
 import '../../../App.css'
 import {useHistory} from 'react-router-dom'
 
-function Signup() {
+function Signin() {
   const [email, setEmail] = useState('')
 
   const  [password, setPassword] = useState('')
@@ -36,7 +36,7 @@ function Signup() {
 // })
   return (
     <div className='signup-container'>
-        <h1>Sign up</h1>
+        <h1>Sign in</h1>
         <form action='/' method='post' encType="multiplart/form-data">
           <div className='row'>
             <label>Email</label>
@@ -59,4 +59,4 @@ function Signup() {
   )
 }
 
-export default Signup;
+export default Signin;

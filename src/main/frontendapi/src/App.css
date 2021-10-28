@@ -11,52 +11,12 @@
 .home,
 .services,
 .discover,
-.about,
-.signup {
+.about {
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-}
-
-.services {
-  /* background-image: url('/images/img-2.jpg'); */
-  background-color: darkgrey;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.discover {
-  /* background-image: url('/images/img-1.jpg'); */
-  background-color: indianred;
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-.about {
-  /* background-image: url('/images/img-1.jpg'); */
-  background-color:lightblue;
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.signup {
-  /* background-image: url('/images/img-8.jpg'); */
-  background-color: cadetblue;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
 }
 
 .heroContainer > h1{
