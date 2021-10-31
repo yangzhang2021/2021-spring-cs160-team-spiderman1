@@ -1,13 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    width: 100%;
-    height: 100vh;
-	color:white;
-}
 img{
 	max-width:100%;
 	height:100%;
@@ -23,7 +13,7 @@ img{
 	border-radius: 15px; 
 }
 
-.box{
+.form-box{
     width: 100%;
     height: 200px;
     position: absolute;
@@ -43,7 +33,6 @@ input{
     height: 50px;
     margin: 35px auto;
 }
-/*	have to change name ;*/
 h{
 	margin-left: 15px;
     font-size: 25px;
