@@ -1,4 +1,4 @@
-package appuser;
+package com.yangcode.awsimageup.appuser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

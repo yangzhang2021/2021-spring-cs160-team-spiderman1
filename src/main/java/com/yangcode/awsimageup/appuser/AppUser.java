@@ -1,4 +1,4 @@
-package appuser;
+package com.yangcode.awsimageup.appuser;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

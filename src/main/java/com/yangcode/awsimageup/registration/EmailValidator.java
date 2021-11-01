@@ -1,4 +1,4 @@
-package registration;
+package com.yangcode.awsimageup.registration;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package appuser;
+package com.yangcode.awsimageup.appuser;
 
 import com.yangcode.awsimageup.registration.Token.ConfirmationToken;
 import com.yangcode.awsimageup.registration.Token.ConfirmationTokenService;
@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 
 import java.time.LocalDateTime;
 import java.util.UUID;

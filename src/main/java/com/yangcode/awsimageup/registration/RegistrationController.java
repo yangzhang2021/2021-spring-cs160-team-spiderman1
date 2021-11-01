@@ -1,4 +1,4 @@
-package registration;
+package com.yangcode.awsimageup.registration;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

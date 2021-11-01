@@ -1,6 +1,6 @@
-package registration.Token;
+package com.yangcode.awsimageup.registration.Token;
 
-import com.example.demo.appuser.AppUser;
+import com.yangcode.awsimageup.appuser.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

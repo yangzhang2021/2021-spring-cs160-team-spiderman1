@@ -1,4 +1,4 @@
-package registration.Token;
+package com.yangcode.awsimageup.registration.Token;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

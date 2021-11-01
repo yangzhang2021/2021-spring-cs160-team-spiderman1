@@ -1,20 +1,14 @@
-package registration;
+package com.yangcode.awsimageup.registration;
 
 import appuser.AppUser;
 import appuser.AppUserRole;
 import appuser.AppUserService;
-//import com.example.demo.appuser.AppUser;
-//import com.example.demo.appuser.AppUserRole;
-//import com.example.demo.appuser.AppUserService;
-//import com.example.demo.email.EmailSender;
-//import com.example.demo.registration.token.ConfirmationToken;
-//import com.example.demo.registration.token.ConfirmationTokenService;
+import com.yangcode.awsimageup.registration.Token.ConfirmationToken;
+import com.yangcode.awsimageup.registration.Token.ConfirmationTokenService;
 import email.EmailSender;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import registration.Token.ConfirmationToken;
-import registration.Token.ConfirmationTokenService;
 
 import java.time.LocalDateTime;
 

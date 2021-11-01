@@ -1,4 +1,4 @@
-package registration.Token;
+package com.yangcode.awsimageup.registration.Token;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

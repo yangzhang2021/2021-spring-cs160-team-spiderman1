@@ -1,7 +1,6 @@
-package security.config;
+package com.yangcode.awsimageup.security.config;
 
-import appuser.AppUserService;
-//import com.example.demo.appuser.AppUserService;
+import com.yangcode.awsimageup.appuser.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package email;
+package com.yangcode.awsimageup.email;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @AllArgsConstructor
-public class EmailService implements EmailSender{
+public class EmailService implements EmailSender {
 
     private final static Logger LOGGER = LoggerFactory
             .getLogger(EmailService.class);
