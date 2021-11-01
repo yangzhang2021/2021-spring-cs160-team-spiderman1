@@ -1,15 +1,14 @@
 package appuser;
 
-import com.example.demo.registration.token.ConfirmationToken;
-import com.example.demo.registration.token.ConfirmationTokenService;
+import com.yangcode.awsimageup.registration.Token.ConfirmationToken;
+import com.yangcode.awsimageup.registration.Token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import registration.Token.ConfirmationToken;
-import registration.Token.ConfirmationTokenService;
+
 
 import java.time.LocalDateTime;
 import java.util.UUID;
