@@ -20,26 +20,24 @@ public class IBlog implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private Long imgId;
+    private Long imgID;
     private Date time;
     private String title;
     private String content;
-    private String comment;
     private String category;
     private Long likes;
     private Long userID;
 
 
 
-    public IBlog(Long imgId, Date time, String title,
-                 String content, String comment, String category,
+    public IBlog(Long imgID, Date time, String title,
+                 String content,String category,
                  Long likes, Long userID ) {
 
-        this.imgId = imgId;
+        this.imgID = imgID;
         this.time = time;
         this.title = title;
         this.content = content;
-        this.comment = comment;
         this.category = category;
         this.likes = likes;
         this.userID = userID;
@@ -50,11 +48,10 @@ public class IBlog implements Serializable {
     public String toString() {
         return "IBlog{" +
                 "id=" + this.id +
-                ", imgId=" + this.imgId +
+                ", imgID=" + this.imgID +
                 ", time=" + this.time +
                 ", title='" + this.title + '\'' +
                 ", content='" + this.content + '\'' +
-                ", comment='" + this.comment + '\'' +
                 ", category='" + this.category + '\'' +
                 ", likes=" + this.likes +
                 ", userID=" + this.userID +

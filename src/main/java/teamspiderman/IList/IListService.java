@@ -19,9 +19,9 @@ public class IListService {
         return iListRepo.save(iList);
     }
 
-    public List<IList> getAllIListsById(Long id) {
+    public List<IList> getAllIListsByuserID(Long id) {
         return iListRepo
-                .getAllIListsById(id)
+                .getAllIListsByuserID(id)
                 .orElseThrow(()->new IListNotFoundException("ILists for user"+id+"were not found"));
     }
 

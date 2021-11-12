@@ -14,17 +14,16 @@ import java.util.List;
 public class IListController {
     private final IListService iListService;
 
-    @PostMapping("/{userId}/addIlist")
+    @PostMapping("/addIList")
     public ResponseEntity<IList> addIList(
-            @PathVariable("userId") Long userId,
             @RequestBody IList iList){
         IList newIList = iListService.addIList(iList);
         return new ResponseEntity<>(newIList, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<IList>> getAllIListsById (@PathVariable("userId") Long userId) {
-        List<IList> iLists = iListService.getAllIListsById(userId);
+    @GetMapping("/{userId}/iLists")
+    public ResponseEntity<List<IList>> getAllIListsByuserID (@PathVariable("userId") Long userId) {
+        List<IList> iLists = iListService.getAllIListsByuserID(userId);
         return new ResponseEntity<>(iLists, HttpStatus.OK);
     }
 

@@ -13,5 +13,5 @@ public interface IListRepository extends JpaRepository<IList, Long> {
 
     void deleteIListById(Long id);
     Optional<IList> getIListById(Long id);
-    Optional<List<IList>> getAllIListsById(Long id);
+    Optional<List<IList>> getAllIListsByuserID(Long id);
 }

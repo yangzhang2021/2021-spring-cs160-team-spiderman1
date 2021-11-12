@@ -21,8 +21,6 @@ public class Img implements Serializable {
     private Long iListID;
     private Long userID;
 
-
-
     public Img(String path, Long iBlogID,
                Long iListID, Long userID) {
         this.path = path;

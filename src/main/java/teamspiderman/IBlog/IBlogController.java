@@ -17,23 +17,23 @@ import java.util.List;
 public class IBlogController {
 
     private final IBlogService iBlogService;
-    private final CommentService commentService;
 
-    @PostMapping("/{userId}/addIblog")
+
+    @PostMapping(path ="/addIblog")
     public ResponseEntity<IBlog> addIBlog(
-            @PathVariable("userId") Long userId,
             @RequestBody IBlog iBlog){
         IBlog newIBlog = iBlogService.addIBlog(iBlog);
         return new ResponseEntity<>(newIBlog, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userId}/iBlogs")
-    public ResponseEntity< List<IBlog>> getAllIBlogsById (@PathVariable("userId") Long userId) {
-        List<IBlog> iBlogs = iBlogService.getAllIBlogsById(userId);
+    @GetMapping(path ="/{userId}/iBlogs")
+    public ResponseEntity< List<IBlog>> getAllIBlogsByuserID (@PathVariable("userId") Long userId) {
+        List<IBlog> iBlogs = iBlogService.getAllIBlogsByuserID(userId);
         return new ResponseEntity<>(iBlogs, HttpStatus.OK);
     }
 
-    @GetMapping("/{iBlogId}")
+
+    @RequestMapping(path ="/{iBlogId}", method = RequestMethod.GET, params="content")
     public ResponseEntity<IBlog> getIBlogById (@PathVariable("iBlogId") Long iBlogId){
         IBlog iBlog = iBlogService.getIBlogById(iBlogId);
         return new ResponseEntity<>(iBlog, HttpStatus.OK);

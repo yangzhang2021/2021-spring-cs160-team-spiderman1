@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface IBlogRepository extends JpaRepository<IBlog, Long> {
     void deleteIBlogById(Long id);
     Optional<IBlog> getIBlogById(Long id);
-    Optional<List<IBlog>> getAllIBlogsById(Long userId);
+    Optional<List<IBlog>> getAllIBlogsByuserID(Long userId);
 }

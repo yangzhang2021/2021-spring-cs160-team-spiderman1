@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/")
+@RequestMapping(path = "api/v1")
 @AllArgsConstructor
 public class CommentController {
     private final CommentService commentService;
 
-    @PostMapping("")
-    public ResponseEntity<Comment> addComment(@RequestBody Comment comment){
+    @PostMapping("/addComment")
+    public ResponseEntity<Comment> addComment(
+            @RequestBody Comment comment){
         Comment newComment = commentService.addComment(comment);
         return new ResponseEntity<>(newComment, HttpStatus.CREATED);
     }
@@ -28,14 +29,15 @@ public class CommentController {
         return new ResponseEntity<>(comments, HttpStatus.CREATED);
     }
 
-    @GetMapping("/iBlog/comments/{iBlogId}")
+    //@GetMapping("/iBlog/comments/{iBlogId}")
+    @RequestMapping(path="/iBlog/{iBlogId}", method = RequestMethod.GET, params="comments")
     public ResponseEntity<List<Comment>> findByiBlogID(
             @PathVariable("iBlogId") Long iBlogId){
         List<Comment> comments= commentService.findByiBlogID(iBlogId);
         return new ResponseEntity<>(comments, HttpStatus.CREATED);
     }
 
-    @GetMapping("/iList/comments/{iListId}")
+    @RequestMapping(path="/iList/{iListId}", method = RequestMethod.GET, params="comments")
     public ResponseEntity<List<Comment>> findByiListID(
             @PathVariable("iListId") Long iListId){
         List<Comment> comments= commentService.findByiListID(iListId);

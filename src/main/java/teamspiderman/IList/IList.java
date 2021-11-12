@@ -3,6 +3,7 @@ package teamspiderman.IList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import teamspiderman.appuser.AppUser;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,16 +22,16 @@ public class IList implements Serializable {
     private Date time;
     private String title;
     private String content;
-    private String comment;
     private Long userID;
 
-    public IList(Long imgId, Date time, String title, String content, String comment, Long userID) {
+    public IList(Long imgId, Date time,
+                 String title, String content,
+                 Long userID) {
 
         this.imgId = imgId;
         this.time = time;
         this.title = title;
         this.content = content;
-        this.comment = comment;
         this.userID = userID;
     }
 
@@ -42,7 +43,6 @@ public class IList implements Serializable {
                 ", time=" + time +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", comment='" + comment + '\'' +
                 ", userID=" + userID +
                 '}';
     }

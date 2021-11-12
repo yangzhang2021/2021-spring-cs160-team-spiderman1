@@ -17,9 +17,9 @@ public class IBlogService {
         return iBlogRepo.save(iIBlog);
     }
 
-    public List<IBlog> getAllIBlogsById(Long id) {
+    public List<IBlog> getAllIBlogsByuserID(Long id) {
         return iBlogRepo
-                .getAllIBlogsById(id)
+                .getAllIBlogsByuserID(id)
                 .orElseThrow(()->new IBlogNotFoundException("IBlogs for user = "+id+"were not found"));
     }
 
