@@ -1,62 +1,83 @@
-import React, {useState, useEffect}from 'react';
-import '../Signup/Signup.css'
+import React, {useState} from 'react';
+import '../Signin/Signin.css'
 import '../../../App.css'
-import {useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import axios from 'axios';
 
-function Signin() {
+function Signin(){
+
   const [email, setEmail] = useState('')
+  const [password, setPassword]  = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError]  = useState('')
 
-  const  [password, setPassword] = useState('')
-  // const [user, setUser] = useState([])
+  const handleChange =(e, token)=>{
+    const user ={}
+    const emailRegExp = RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    const passwordRegExp = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+    // get token from the form,check token in switch statement
+    user[token] = e.target.value
+    switch(token){
+      case 'email':
+        setEmail(user.email)
+        !emailRegExp.test(user.email) ? setEmailError("Email is invalid!") : setEmailError('')
+        break;
+      case 'password':
+        setPassword(user.password)
+        !passwordRegExp.test(user.password) ? setPasswordError("Password is invalid") : setPasswordError('')
+        break;
+      default:
+        break;
+    }
+  }
+  const handleSubmit = e =>{
+    e.preventDefault();
+    
+    const user={
+      email: email,
+      password: password
+    }
 
-  const history = useHistory()
+    axios.post(`http://localhost:8080/api/v1/signin`, {
+      "email": email,
+      "password": password
+    }) // user signin path
+      .then(res => {
+        localStorage.setItem('token', res.user.token)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+  }
 
-  const handleClick=(e)=>{
-    e.preventDefault()
-
-    history.push("/personhome")
-    const user={email, password}
-    console.log(user)
-    fetch("http://localhost:8080/user_authentication/add", {
-      method:"POST",
-      headers:{"Content-type":"application/json"},
-      body:JSON.stringify(user)
-    }).then(()=>{
-      console.log("new user added")
-    })
-  
-}
-
-// useEffect(()=>{
-//   fetch("http://localhost:8080/user_authentication/getAll" )
-//   .then(res=>res.json())
-//   .then((result)=>{
-//     setUser(result)
-//   })
-// })
   return (
-    <div className='signup-container'>
-        <h1>Sign in</h1>
-        <form action='/' method='post' encType="multiplart/form-data">
-          <div className='row'>
-            <label>Email</label>
-            <input id='email' type='email' placeholder='Enter email' name='Email' required
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            />
-          </div>
-          <div className='row'>
-            <label>Password</label>
-            <input id ='password' type='password' placeholder='Enter password' name='Password' required
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            />
-          </div>
-            <button type='submit' name='signup' value="Sign up" onClick={handleClick}>Sign Up</button>
-         
-        </form>
-    </div>
-  )
-}
 
-export default Signin;
+  <div className='body'>
+    {/* <img src="bg.jpg" alt="bg" /> */}
+    <div className="si">
+        <div className="login">
+            <h1 className='h1'>Sign In</h1>
+            <h2 className='h2'>New user</h2>
+            <form className="form-box" onSubmit={handleSubmit}>
+                <div className="form">
+                    <label className="address">Emaill address</label>
+                    <input type="text" id="address"
+                   onChange={(e) => handleChange(e, 'email')} required/>
+                   {emailError && <small className='err'>{emailError}</small>}
+                </div>
+                <div className="form">
+                    <label className="password">Password</label>
+                    <input type="password" id="password"
+                    onChange={(e) => handleChange(e, 'password')} required/>
+                    {passwordError && <small className='err'>{passwordError}</small>}
+                </div>
+                <button className="btn" type ='submit' name='signin' >Log In</button>
+                <Link to='/signup' className="register">Create an account</Link>
+            </form>
+        </div>
+    </div>
+  </div>
+    )
+  }
+  
+export default Signin

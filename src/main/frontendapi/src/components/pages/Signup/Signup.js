@@ -1,62 +1,163 @@
-import React, {useState, useEffect}from 'react';
+import React, { useState} from 'react';
+import {Link} from "react-router-dom"
 import './Signup.css'
 import '../../../App.css'
-import {useHistory} from 'react-router-dom'
+import axios from 'axios';
+import {AiOutlineExclamationCircle} from 'react-icons/ai'
 
-function Signup() {
+
+function Signup (){
+
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword]  = useState('')
+  const [check, setCheck] = useState('')
 
-  const  [password, setPassword] = useState('')
-  // const [user, setUser] = useState([])
-
-  const history = useHistory()
-
-  const handleClick=(e)=>{
-    e.preventDefault()
-
-    history.push("/personhome")
-    const user={email, password}
-    console.log(user)
-    fetch("http://localhost:8080/user_authentication/add", {
-      method:"POST",
-      headers:{"Content-type":"application/json"},
-      body:JSON.stringify(user)
-    }).then(()=>{
-      console.log("new user added")
-    })
+  const [fnameError, setFnameError] = useState('')
+  const [lnameError, setLnameError] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError]  = useState('')
+  const [checkError, setCheckError] = useState('')
   
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+  const handleChange =(e, token)=>{
+    const user ={}
+    const emailRegExp = RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    const passwordRegExp = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+    // get token from the form,check token in switch statement
+    user[token] = e.target.value
+    switch(token){
+      case 'fname':
+        setFname(user.fname)
+        user.fname.length <1 ? setFnameError("First name is required!") : setFnameError('')
+        break;
+      case 'lname':
+        setLname(user.lname)
+        user.lname.length <1 ? setLnameError("Last name is required!") : setLnameError('')
+        break;
+      case 'email':
+        setEmail(user.email)
+        !emailRegExp.test(user.email) ? setEmailError("Email is invalid!") : setEmailError('')
+        break;
+      case 'password':
+        setPassword(user.password)
+        !passwordRegExp.test(user.password) ? setPasswordError("Password is invalid") : setPasswordError('')
+        break;
+      case 'check':
+        setCheck(user.check)
+        user.check !== password ? setCheckError("Password do not match!") : setCheckError('')
+        break;
+      default:
+        break;
+    }
+    //console.log(fnameError, lnameError, emailError, passwordError, checkError)
+  }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    //console.log(fname, lname, email, password, check)
+    // const user={
+    //   "firstName": fname,
+    //   "lastName": lname,  
+    //   "email": email,
+    //   "password": password
+    // }
+
+    if (fname && lname && email && password && check && !fnameError && !lnameError && !emailError && !passwordError && !checkError){
+      console.log(fname, lname, email, password, check)
+      axios.post(`http://localhost:8080/api/v1/registration`,
+      {
+      "firstName":fname,
+      "lastName": lname,
+      "email": email,
+      "password": password
+    }) // user sign up path
+      .then(res => {
+        console.log(res);
+        
+      })
+      .then(()=>{
+        console.log('success');
+        
+        var confirm_win = window.confirm("click ok to your email to confirm!");
+        if (confirm_win === true){
+          window.location.href ='http://localhost:1080/';
+        }
+        else{
+          alert("please confirm your registration in 15 mins to complete the registration")
+        }
+        //window.location.href ='../../PersonHome/PersonHome.js'
+        // clear values
+        e.target.reset()
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    }
+  }
+
+    return (
+      <div>
+      {/* <img src="bg.jpg" alt="bg" /> */}
+        <div className="si">
+            <div className="signUp">
+              <h1 className='h1'>Create an Account</h1>
+              <h2 className='h2'>Already have an account</h2>
+              <form className="form-box" onSubmit={handleSubmit}> 
+                  <div className="form">
+                      <label className="fname">First Name</label>
+                      <input type="text" id="fname" name='fname'
+                      onChange={(e) => handleChange(e, 'fname')} required/>
+                      {fnameError && <small className='err'>{fnameError}</small>}
+                  </div>
+                  <div className="form">
+                      <label className="lname">Last Name</label>
+                      <input type="text" id="lname" name='lname'
+                      onChange={(e) => handleChange(e, 'lname')} required/>
+                       {lnameError && <small className='err'>{lnameError}</small>}
+                  </div>
+                  <div className="form">
+                      <label className="email">Email address</label>
+                      <input type="text" id="email" name='email'
+                      onChange={(e) => handleChange(e, 'email')} required/>
+                       {emailError && <small className='err'>{emailError}</small>}
+                  </div>
+                  <div className="form">
+                      <label className="password">Password</label>
+                      <input type="password" id="password" name='password'
+                      onChange={(e) => handleChange(e, 'password')} required/>
+                       {passwordError && <small className='err'>{passwordError}</small>}
+                  </div>
+                  <div className="form">
+                      <label className="check">Check Password</label>
+                      <input type="password" id="check" name='check'
+                      onChange={(e) => handleChange(e, 'check')} required/>
+                       {checkError && <small className='err'>{checkError}</small>}
+                  </div>
+                  <button className= 'password-info' onClick={handleClick}><AiOutlineExclamationCircle /></button>
+                  <div className={click ? 'message active': 'message'}>
+                    <div className='password-message'>
+                      <button className='close-button' onClick={closeMobileMenu}>&times;</button>
+                      <p>password should be at least 8 characters</p> 
+                      <p>at least one lower case letter</p> 
+                      <p>at least one upper case letter</p> 
+                      <p>at least one digit</p> 
+                      <p>at least one special characters ie:@$!%*?&</p> 
+                    </div>
+                  </div>
+                  <div className='overlay'></div>
+                    <button className="btn-signup" type='submit' name='signup'>Create account</button>
+                    <Link to='/signin' className="sign">Sign In</Link>
+                </form>
+              </div>
+            </div>
+          </div>
+        )
 }
 
-// useEffect(()=>{
-//   fetch("http://localhost:8080/user_authentication/getAll" )
-//   .then(res=>res.json())
-//   .then((result)=>{
-//     setUser(result)
-//   })
-// })
-  return (
-    <div className='signup-container'>
-        <h1>Sign up</h1>
-        <form action='/' method='post' encType="multiplart/form-data">
-          <div className='row'>
-            <label>Email</label>
-            <input id='email' type='email' placeholder='Enter email' name='Email' required
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            />
-          </div>
-          <div className='row'>
-            <label>Password</label>
-            <input id ='password' type='password' placeholder='Enter password' name='Password' required
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            />
-          </div>
-            <button type='submit' name='signup' value="Sign up" onClick={handleClick}>Sign Up</button>
-         
-        </form>
-    </div>
-  )
-}
-
-export default Signup;
+export default Signup

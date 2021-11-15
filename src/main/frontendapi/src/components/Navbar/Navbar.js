@@ -33,7 +33,6 @@ function Navbar() {
             </li>
             <li className='nav-item'>
             <NavLink activeStyle={{ color:"#b4ccbc"}} exact to='/signin' className='nav-links' onClick={closeMobileMenu}> Sign In</NavLink>
-           /*  <a href="./signUp.html" id="register">Create an account</a> this will not cause  */
             </li>
             <li className='nav-item'>
             <NavLink activeStyle={{ color:"#b4ccbc"}} exact to='/signup' className='nav-links' onClick={closeMobileMenu}> Sign Up</NavLink>

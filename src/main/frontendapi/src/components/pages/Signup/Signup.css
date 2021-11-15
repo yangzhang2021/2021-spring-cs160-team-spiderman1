@@ -1,67 +1,132 @@
-.signup-container{
-    background-color: var(--light-green);
-    height: 100vh;
+
+/* body {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
+    height: 100vh;
+	color:white;
+} */
+img{
+	max-width:100%;
+	height:100%;
 }
 
-.signup > h1 {
-    color: #fff;
-    font-size: 80px;
+.signUp{
+    width: 480px;
+    height: 530px;
+	background:#FFFFFF;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+	border-radius: 15px; 
 }
 
-.row{
-    margin: 30px;
-    align-items: center;
+.form-box{
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 25%;
 }
 input{
-    font-size: 20px;
-    border-radius: 5px;
+    width: 350px;
+    height: 30px;
+    outline-style: none;
     border: none;
-    padding: 5px;
-    height: 40px;
+    border-bottom: 1px solid white;
+    font-size: 18px;
+    background: transparent;
+}
+.err{
+    color:red;
 }
 
-label{
-    font-size: 40px;
-    display: inline-block;
-    margin-right: 20px;
+.form{
+    width: 365px;
+    height: 45px;
+    margin: 35px auto;
 }
 
-button{
-    color:var(--primary-black);
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    text-decoration: none;
+.h1{
+    display: inline;
+    position:relative;
+    left: 140px;
     text-align: center;
-    border: 1px solid var(--primary-white);
-    border-radius: 1rem;
-    font-size: 20px;
-    margin-left: 200px;
+    font-size: 25px;
+    width: 100%;
+    margin-left: 80%;
 }
 
-@media screen and (max-width: 600px) {
-    input{
-        font-size: 15px;
-        height: 35px;
-    }
+.btn-signup{
+	cursor: pointer;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    bottom: -300px;
+   	margin-left: 340px;
+    font-size: 16px;
+    background: transparent;
+    border-radius: 20px;
+    border: 1px solid black;
+    outline-style: none;
+	color:white;
+	background-color: rgb(108,156,147)
+}
 
-    .signup > h1 {
-        font-size: 60px;
-    }
-    
-    label{
-        font-size: 35px;
-        margin-right: 15px;
-    }
+a,a:hover{
+    text-decoration: none;
+    /* color: royalblue; */
+}
+.h2{
+	position:absolute;
+	left:80px;
+	top:104px;
+    font-size: 10px;
+}
+.sign{
+    position: absolute;
+    bottom: 210px;
+    left: 320px;
+    color: var(--light-green)
+}
 
-    button{
-        font-size: 15px;
-        padding: 8px;
-    }
-  }
+.password-info{
+    position: absolute;
+    top:147%;
+    left:30%;
+    cursor: pointer;
+    border:none;
+    background-color: white;
+    font-size: 15px;
+}
+.message{
+    position: absolute;
+    top:180%;
+    left: 80%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid gray;
+    border-radius: 10px;
+    z-index: 999;
+    background-color: rgba(241, 238, 238, 0.363);
+    width: 400px;
+    max-width: 80%;
+    padding: 10px 10px;
+}
+
+
+.message.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.close-button{
+    position: absolute;
+    left:92%;
+    cursor: pointer;
+    border:none;
+    outline:none;
+    background: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+
+}
+
+.password-message{
+    display: inline;
+}

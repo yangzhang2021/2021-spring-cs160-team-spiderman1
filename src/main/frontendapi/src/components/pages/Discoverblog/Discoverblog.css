@@ -30,7 +30,7 @@
     overflow: hidden;
     border-radius: 50%;
     border: 1px solid var(--primary-black);
-    z-index: -1;
+    
 }
 .user-img-blog{
     display: inline;
