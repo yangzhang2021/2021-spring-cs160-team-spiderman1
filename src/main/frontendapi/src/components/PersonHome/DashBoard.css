@@ -138,30 +138,77 @@
 }
 
 .iblog{
-    text-align:
-    center;padding: 
-    10px;color: #F88600;
+    text-align:center;
+    padding: 10px;
+    color: #F88600;
     font-size: 28px;
 }
 
 .right-side-section-div{
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 30px;
     height: 300px;
     padding: 10px; 
     border: 2px; 
     border-radius: 25px;
 }
+
+.right-side-section-name{
+    font-size: 26px;
+    text-align: center;
+}
+
 .right-side-section-p{
     font-size: 26px;
     text-align: left;
 }
 
-.image3{
-    width: 165px;
+.img-holder{
     height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    margin: auto;
+}
+.user-profile-img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
+#input[type='file']{
+    display: none;
+}
+
+.label{
+    width: 100%;
+    display:inline;
+}
+
+.image-upload{
+    margin: auto;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    left: 5%;
+}
+.upload-icon{
+    font-size: 1rem;
+}
+
+.button-upload-image{
+    padding:0.35em 0.4em; 
+    border: 0.1em solid #FFFFFF; 
+    margin:-2em; 
+    border-radius:0.2em; 
+    box-sizing: border-box; 
+    text-decoration:none; 
+    color:dimgray; 
+    text-align:center; 
+    transition: all 0.2s;
+    cursor: pointer;
+}
 .right-side-section-p2{
     font-size: 14px;
     color: #686868;
@@ -277,7 +324,7 @@
 
 .big-section-title-p{
     font-size:16px;
-    text-align: center;
+    text-align: left;
 }
 
 .big-section-sub-detail{

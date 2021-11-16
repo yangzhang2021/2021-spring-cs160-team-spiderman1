@@ -10,7 +10,9 @@ import Discover from './components/pages/Discoverblog/Discoverblog'
 import iList from './components/pages/Discoverlist/Discoverlist'
 import About from './components/pages/About/About'
 import PersonHome from './components/PersonHome/PersonHome'
+import DashBoard from'./components/PersonHome/DashBoard'
 import axios from 'axios';
+
 
 axios.defaults.headers.common['Authorization'] =  'Bearer' + localStorage.getItem('token')
 axios.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true'
@@ -68,6 +70,7 @@ export default class App extends React.Component {
             <RouterWithNav2 path='/discover' exact component={Discover}/>
             <RouterWithNav2 path='/discoverlist' exact component={iList}/>
             <Route path='/personHome' extact component={PersonHome}/>
+            <Route path='/DashBoard' extact component={DashBoard}/>
           </Switch>
         </Router>
       </>

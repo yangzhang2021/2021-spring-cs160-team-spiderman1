@@ -46,7 +46,7 @@ function Signup (){
         break;
       case 'password':
         setPassword(user.password)
-        !passwordRegExp.test(user.password) ? setPasswordError("Password is invalid") : setPasswordError('')
+        !passwordRegExp.test(user.password) ? setPasswordError("Password is invalid!") : setPasswordError('')
         break;
       case 'check':
         setCheck(user.check)

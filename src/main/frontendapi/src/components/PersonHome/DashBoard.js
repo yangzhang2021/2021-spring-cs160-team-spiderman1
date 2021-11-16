@@ -1,12 +1,13 @@
 import axios from 'axios';
-import React from 'react';
+import React, { Component } from 'react';
 import './DashBoard.css' 
 import {Link} from 'react-router-dom'
+import './../../App.css'
+import defaultUserImg from '../../img/defaultUserImg.JPG'
+import {MdOutlineFileUpload} from 'react-icons/md'
 
-import userImg from '../../img/userImg.jpg'
 
-
-function PersonHome(){
+export default class PersonHome extends Component{
 
     // state ={}
     // componentDidMount(){
@@ -23,6 +24,33 @@ function PersonHome(){
     // if(this.props.user){
     //     return (<h1>hi {this.props.user.firstName}</h1>)
     // }
+    state = {
+        profileImg :defaultUserImg
+    }
+
+     imageHandler=(e)=>{
+        console.log(e.target.files[0])
+        const reader = new FileReader()
+        reader.onload=()=>{
+            if(reader.readyState===2){
+                this.setState({profileImg:reader.result})
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])//[0] file details
+    }
+
+    imageUploadHandler=()=>{
+        const fd = new FormData()
+        fd.append('image', this.state.profileImg, this.state.profileImg.name)
+        axios.post('http://localhost:8080/api/v1/user/profile', fd) // path to get user image
+        .then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+    render(){
+        const {profileImg} = this.state
     return(
         <div className="cont-main">
             <div className="server-tab" >
@@ -30,21 +58,21 @@ function PersonHome(){
                     <div className ='server-tab-sub-sub'>
                         <div className='server-tab-sub-sub-sub'>
                             <div className='span-sub'>
-                                <span className='credit'>Credit</span>
-                                <span className='high'>High</span>
+                                <span className='credit'></span>
+                                <span className='high'></span>
                             </div>
                         </div>
                             
                          <div className='server-tab-sub-sub-sub'>
                             <div className='span-sub'>
-                                <span className='test'>TEST</span>
+                                <span className='test'></span>
                                 <image className='image1' alt='image'/>	
                             </div>
                         </div>
                             
                         <div className='server-tab-sub-sub-sub'>
                             <div className='span-sub'>
-                                <span className='service'>Service</span>
+                                <span className='service'></span>
                                 <image className='image2'/>	
                             </div>
                         </div>
@@ -66,21 +94,30 @@ function PersonHome(){
                             
                         </div>
                     </div>	
-                 
                             
                     <div className='right-side'>
-                        <p className='iblog'>iBlog</p>
+                        <p className='iblog'>Dashboard</p>
 
                         <div className='right-side-section-div'>
-                            <p className='right-side-section-p'>Lockon Stratos</p>
-                            <image className='image3' alt='image' src={userImg}/>
-                            <p className='right-side-user-p2'>Welcome to my iBlog</p>
+                            <p className='right-side-section-name'>user name</p>
+                            <div className='img-holder'>
+                                <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
+                            </div>
+                            <input type='file' name='image-upload' id='input' accept='image/*' onChange={this.imageHandler}/>
+                            <div className='label'>
+                                <label htmlFor='input' className='image-upload'>
+                                    <div className='upload-icon'> <MdOutlineFileUpload /></div>
+                                    <p>Choose your photo</p>
+                                </label>
+                                <button className='button-upload-image' onClick={this.imageUploadHandler}>Upload</button>
+                            </div>
+                            <p className='right-side-user-p2'></p>
                         </div>
                     
                         <div className='right-side-section-div'>
                             <p className='right-side-section-p'>Contact</p>
                             <p className='right-side-section-p2'>Phone: XXX-XXX-XXXX<br/><br/>
-                            Email: Celestial_Being@gmail.com</p>
+                            Email: emailg@gmail.com</p>
                         </div>
                             
                         <div className='right-side-section-div'>
@@ -124,8 +161,8 @@ function PersonHome(){
                             <image className='image7' alt='image'/>
                         </div>
                         <div className='big-section-sub-title'>
-                            <p className='big-section-title-p'><strong>Zabanya Gundam...</strong></p>
-                            <p>Even if alienated by the world, I will continue to fight until punishment comes... </p>
+                            <p className='big-section-title-p'><strong>title...</strong></p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.... </p>
                         </div>
                         <div className='big-section-sub-detail'>
                             <button className='button-detail'>See detail</button>
@@ -137,8 +174,8 @@ function PersonHome(){
                             <image className='image8' alt='image'/>
                         </div>
                         <div className='big-section-sub-title'>
-                            <p className='big-section-title-p'><strong>Trans-Am System</strong></p>
-                            <p>The movement speed, defense and combat effectiveness will be improved</p>
+                            <p className='big-section-title-p'><strong>title</strong></p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                         </div>
                         <div className='big-section-sub-detail'>
                             <button className='button-detail'>See detail</button>
@@ -154,7 +191,7 @@ function PersonHome(){
                     <div className='big-section-list-div-div'>
                         <div className='big-section-list-div-div-item'>
                             <image className='big-section-list-div-div-item-img' alt='image'/>
-                            <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
+                            <p className='big-section-list-div-div-item-title'>product</p>
                             
                             <p className='big-section-list-div-div-item-price'>$200</p>
                             <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
@@ -163,7 +200,7 @@ function PersonHome(){
                         
                         <div className='big-section-list-div-div-item'>
                         <image className='big-section-list-div-div-item-img' alt='image'/>
-                            <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
+                            <p className='big-section-list-div-div-item-title'>product</p>
                             
                             <p className='big-section-list-div-div-item-price'>$200</p>
                             <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
@@ -172,7 +209,7 @@ function PersonHome(){
                         
                         <div className='big-section-list-div-div-item'>
                         <image className='big-section-list-div-div-item-img' alt='image'/>
-                            <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
+                            <p className='big-section-list-div-div-item-title'>product</p>
                             
                             <p className='big-section-list-div-div-item-price'>$200</p>
                             <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
@@ -184,6 +221,5 @@ function PersonHome(){
         </div>
     </div>
     )
-    
+    }    
 }
-export default PersonHome
