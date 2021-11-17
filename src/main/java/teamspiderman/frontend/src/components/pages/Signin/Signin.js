@@ -9,14 +9,21 @@ export default class Signin extends React.Component{
   handleSubmit = e =>{
     e.preventDefault();
     
-    const user={
-      email: this.email,
-      password: this.password
-    }
+    // const user={
+    //   email: this.email,
+    //   password: this.password
+    // }
 
-    axios.post(`http://localhost:8080/api/v1/signin`, user) // user signin path
+    console.log(this.email)
+    console.log(this.password)
+
+    axios.post(`http://localhost:8080/api/v1/signin`,{
+      "email": this.email,
+      "password": this.password
+    }) // user signin path
       .then(res => {
-        localStorage.setItem('token', res.user.token)
+        window.location.href ='../../PersonHome/PersonHome.js'
+        //localStorage.setItem('token', res.user.token)
       })
       .catch(err =>{
         console.log(err)

@@ -19,7 +19,7 @@ import java.util.UUID;
 public class AppUserService implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG =
-            "user with email %s not found";
+            "email %s or password is incorrect";
 
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -75,6 +75,26 @@ public class AppUserService implements UserDetailsService {
 //        TODO: SEND EMAIL
 
         return token;
+    }
+
+    public Long siginUser(String email, String password){
+
+        AppUser appUser = appUserRepository.findByEmail(email)
+                .orElseThrow(()->
+                        new IllegalStateException(
+                                String.format(USER_NOT_FOUND_MSG, email)));
+
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(password);
+
+        String userPassword = appUserRepository
+                .findByEmail(email).get().getPassword();
+
+        if(!encodedPassword.equals(userPassword)){
+            new IllegalStateException(String.format(USER_NOT_FOUND_MSG, email));
+        }
+
+        return appUser.getUserID();
     }
 
     public int enableAppUser(String email) {

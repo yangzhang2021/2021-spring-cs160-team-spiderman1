@@ -33,8 +33,9 @@ export default class Signup extends React.Component{
         console.log('success');
         
         var confirm_win = window.confirm("click ok to your email to confirm!");
-        if (confirm_win == true){
+        if (confirm_win === true){
           window.location.href ='http://localhost:1080/';
+          //window.location.href ='../../PersonHome/PersonHome.js'
         }
         else{
           alert("please confirm your registration in 15 mins to complete the registration")
