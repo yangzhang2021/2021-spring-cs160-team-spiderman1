@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import teamspiderman.backend.appuser.AppUserRepository;
 
 import java.util.List;
 
@@ -13,10 +14,25 @@ import java.util.List;
 @AllArgsConstructor
 public class CommentController {
     private final CommentService commentService;
+    private final AppUserRepository appUserRepository;
 
     @PostMapping("/addComment")
     public ResponseEntity<Comment> addComment(
             @RequestBody Comment comment){
+
+        Long user_id = comment.getUserID();
+
+        boolean userExists = appUserRepository
+                .findUserByuserID(user_id)
+                .isPresent();
+
+        if(!userExists){
+            throw new IllegalStateException("user doesn't exist");
+        }
+        if(comment.getContent().isEmpty()){
+            throw new IllegalStateException("content cannot be empty");
+        }
+
         Comment newComment = commentService.addComment(comment);
         return new ResponseEntity<>(newComment, HttpStatus.CREATED);
     }

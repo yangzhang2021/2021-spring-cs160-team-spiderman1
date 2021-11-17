@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import teamspiderman.backend.appuser.AppUserRepository;
 
 import java.util.List;
 
@@ -15,11 +16,28 @@ import java.util.List;
 public class IBlogController {
 
     private final IBlogService iBlogService;
+    private final AppUserRepository appUserRepository;
 
 
     @PostMapping(path ="/addIblog")
     public ResponseEntity<IBlog> addIBlog(
             @RequestBody IBlog iBlog){
+
+        Long user_id = iBlog.getUserID();
+
+        boolean userExists = appUserRepository
+                .findUserByuserID(user_id)
+                .isPresent();
+
+        if(!userExists){
+            throw new IllegalStateException("user doesn't exist");
+        }
+        if(iBlog.getContent().isEmpty()
+                || iBlog.getTitle().isEmpty()
+                || iBlog.getCategory().isEmpty()){
+            throw new IllegalStateException("content, title or category cannot be empty");
+        }
+
         IBlog newIBlog = iBlogService.addIBlog(iBlog);
         return new ResponseEntity<>(newIBlog, HttpStatus.CREATED);
     }
