@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import teamspiderman.backend.appuser.AppUserRepository;
 
 import java.util.List;
 
@@ -13,10 +14,26 @@ import java.util.List;
 @AllArgsConstructor
 public class IListController {
     private final IListService iListService;
+    private final AppUserRepository appUserRepository;
 
     @PostMapping("/addIList")
     public ResponseEntity<IList> addIList(
             @RequestBody IList iList){
+
+        Long user_id = iList.getUserID();
+
+        boolean userExists = appUserRepository
+                .findUserByuserID(user_id)
+                .isPresent();
+
+        if(!userExists){
+            throw new IllegalStateException("user doesn't exist");
+        }
+
+        if(iList.getContent().isEmpty()
+                || iList.getTitle().isEmpty()){
+            throw new IllegalStateException("content or title cannot be empty");
+        }
         IList newIList = iListService.addIList(iList);
         return new ResponseEntity<>(newIList, HttpStatus.CREATED);
     }

@@ -17,17 +17,17 @@ public class IList implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private Long imgId;
+    private Long imgID;
     private Date time;
     private String title;
     private String content;
     private Long userID;
 
-    public IList(Long imgId, Date time,
+    public IList(Long imgID, Date time,
                  String title, String content,
                  Long userID) {
 
-        this.imgId = imgId;
+        this.imgID = imgID;
         this.time = time;
         this.title = title;
         this.content = content;
@@ -38,7 +38,7 @@ public class IList implements Serializable {
     public String toString() {
         return "IList{" +
                 "id=" + id +
-                ", imgId=" + imgId +
+                ", imgID=" + imgID +
                 ", time=" + time +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
