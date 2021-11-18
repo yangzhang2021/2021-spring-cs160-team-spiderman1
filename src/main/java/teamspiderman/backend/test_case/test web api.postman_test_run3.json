@@ -1,0 +1,282 @@
+{
+	"id": "23b0119a-1fae-4a0f-b2dc-f6ae9b5962d4",
+	"name": "test web api",
+	"timestamp": "2021-11-18T01:53:33.392Z",
+	"collection_id": "18308251-f7c0d58c-5b28-45e8-84f7-159a77952b14",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 40,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "578af16b-ef6f-4b41-bdb0-146896597505",
+			"name": "get all iBlogs by userId",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				9,
+				10,
+				7,
+				9,
+				7,
+				8,
+				6,
+				6,
+				6,
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "42f78e71-901f-4e47-9338-550ff26bbd6d",
+			"name": "get comments by userId",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				7,
+				10,
+				9,
+				8,
+				6,
+				8,
+				8,
+				6,
+				6,
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f1ac870c-c32f-418d-b74a-bf903ff998bc",
+			"name": "get all iLists by userId",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				8,
+				8,
+				6,
+				6,
+				9,
+				7,
+				8,
+				7,
+				7,
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "975db789-dd95-4b86-98a0-91d6e2910a7a",
+			"name": "get imgs by userId",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
+			"times": [
+				8,
+				11,
+				6,
+				7,
+				6,
+				6,
+				6,
+				36,
+				6,
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				},
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 10,
+	"totalTime": 318,
+	"collection": {
+		"requests": [
+			{
+				"id": "578af16b-ef6f-4b41-bdb0-146896597505",
+				"method": "GET"
+			},
+			{
+				"id": "42f78e71-901f-4e47-9338-550ff26bbd6d",
+				"method": "GET"
+			},
+			{
+				"id": "f1ac870c-c32f-418d-b74a-bf903ff998bc",
+				"method": "GET"
+			},
+			{
+				"id": "975db789-dd95-4b86-98a0-91d6e2910a7a",
+				"method": "GET"
+			}
+		]
+	}
+}

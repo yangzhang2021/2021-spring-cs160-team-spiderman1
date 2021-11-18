@@ -41,7 +41,7 @@ public class CommentController {
     public ResponseEntity<List<Comment>> findByuserID(
             @PathVariable("userId") Long userId){
         List<Comment> comments= commentService.findByuserID(userId);
-        return new ResponseEntity<>(comments, HttpStatus.CREATED);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
     //@GetMapping("/iBlog/comments/{iBlogId}")
@@ -49,14 +49,14 @@ public class CommentController {
     public ResponseEntity<List<Comment>> findByiBlogID(
             @PathVariable("iBlogId") Long iBlogId){
         List<Comment> comments= commentService.findByiBlogID(iBlogId);
-        return new ResponseEntity<>(comments, HttpStatus.CREATED);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
     @RequestMapping(path="/iList/{iListId}", method = RequestMethod.GET, params="comments")
     public ResponseEntity<List<Comment>> findByiListID(
             @PathVariable("iListId") Long iListId){
         List<Comment> comments= commentService.findByiListID(iListId);
-        return new ResponseEntity<>(comments, HttpStatus.CREATED);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
 

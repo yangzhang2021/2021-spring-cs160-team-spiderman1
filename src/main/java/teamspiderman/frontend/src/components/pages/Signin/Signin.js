@@ -14,15 +14,19 @@ export default class Signin extends React.Component{
     //   password: this.password
     // }
 
-    console.log(this.email)
-    console.log(this.password)
+    
 
     axios.post(`http://localhost:8080/api/v1/signin`,{
       "email": this.email,
       "password": this.password
     }) // user signin path
       .then(res => {
-        window.location.href ='../../PersonHome/PersonHome.js'
+        console.log(res.status)
+        if(res.status===200){
+          window.location.href ='../../PersonHome/PersonHome.js'
+        }else{
+          alert("please check your email or password")
+        }
         //localStorage.setItem('token', res.user.token)
       })
       .catch(err =>{

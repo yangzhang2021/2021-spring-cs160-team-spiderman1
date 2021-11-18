@@ -53,6 +53,7 @@ public class AppUserService implements UserDetailsService {
             }
         }
 
+
         String encodedPassword = bCryptPasswordEncoder
                 .encode(appUser.getPassword());
 
@@ -84,14 +85,15 @@ public class AppUserService implements UserDetailsService {
                         new IllegalStateException(
                                 String.format(USER_NOT_FOUND_MSG, email)));
 
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(password);
 
-        String userPassword = appUserRepository
-                .findByEmail(email).get().getPassword();
 
-        if(!encodedPassword.equals(userPassword)){
-            new IllegalStateException(String.format(USER_NOT_FOUND_MSG, email));
+        BCryptPasswordEncoder encode=new BCryptPasswordEncoder();
+
+        String userPassword = appUser.getPassword();
+//        System.out.println("table pw:"+this.loadUserByUsername(email).getPassword()+"\npw:"+encodedPassword);
+        System.out.println("match"+encode.matches(password, userPassword));
+        if(!encode.matches(password, userPassword)){
+            throw new IllegalStateException(String.format(USER_NOT_FOUND_MSG, email));
         }
 
         return appUser.getUserID();
