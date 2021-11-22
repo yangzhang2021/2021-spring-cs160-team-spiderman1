@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+*{
+	   margin:0; padding:0;
+}
+body{
+	  font-size:12px; color:#333;
+	   margin:0; padding:0;
+	   }
+
+
+img{ border:0px;}
+.clear{
+	  clear:both;
+	  }
+
+
+
+.shopdetails{
+	width:1200px;
+	height:700px;
+	margin:0 auto;
+	margin-top:20px;
+	position:relative;
+	
+}
+#leftbox{
+	width:400px;
+	z-index:999;
+	position:absolute;
+}
+
+
+
+
+.centerbox{
+	width:580px;
+	height:575px;
+	position:absolute;
+	top:0px;
+	left:420px;
+	z-index:1;
+}
+.centerbox .imgname{
+	font-size:24px;
+	color:#000;
+	font-weight:bold;
+	width:580px;
+	height:40px;
+	font-family:Microsoft YaHei,arial;
+	margin-bottom:10px;
+}
+.centerbox p,.centerbox samp{
+	width:580px;
+	height:33px;
+	font-size:12px;
+	line-height:33px;
+	color:#666;
+	font-family:"arial";
+	padding-left:10px;
+	
+}
+.centerbox .Aprice, .price, .youhui{
+	background:rgba(232,232,232,0.5);
+}
+.centerbox .price samp{
+	color:#D00;
+	font-size:20px;
+	font-weight:bold;
+}
+
+
+.centerbox ul{
+	margin-left:10px;
+	margin-top:15px;
+	}
+.centerbox ul li{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-left:10px;
+}
+.centerbox .kuanshi{
+	color:#666;
+	font-family:"arial";
+}
+.centerbox .shopimg{
+	width:49px;height:49px;
+}
+.centerbox .shopimg img{
+	margin:2px;
+}
+.centerbox .now{
+	background-color:#F90;
+}
+
+.centerbox .buy{
+		margin-left:30px;
+		margin-top:25px;
+	}
+.centerbox .buy a{
+	
+	display:block;
+	width:200px;
+	height:50px;
+	color:#000;
+	border:1px solid #ccc;
+	float:left;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Microsoft YaHei,arial;
+	margin-left:10px;
+	background-color:#fff;
+	text-align:center;
+	line-height:50px;
+}
+
+.centerbox .fuwu{
+	width:250px;
+	height:35px;
+	margin-left:10px;
+	background-image:url(promise.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	margin-top:10px;
+}
+.centerbox .pay{
+	width:155px;
+	height:35px;
+	margin-left:10px;
+	background-image:url(payment.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	margin-top:10px;
+}
+#firstbuy{
+	background-color:#f00;
+		color:#fff;
+}
+
+.rightbox{
+	width:150px;
+	height:632px;
+	position:absolute;
+	top:0;
+	right:0;
+	border-left:1px solid #ccc;
+}
+.rightbox .name{
+	height:30px;width:150px;
+	color:#666;
+	font-size:16px;
+	line-height:30px;
+	text-align:left;
+	font-family:"arial";
+}
+.rightbox img{
+	margin-left:20px;
+}
+.rightbox p{
+	width:150px;
+	height:20px;
+	font-size:14px;
+	text-align:center;
+	line-height:20px;
+}
+	
+.evaluate{
+	width:1200px;
+	height:4000px;
+	margin:0 auto;
+	position:relative;
+}
+
+.classify .shopim {
+	width:198px;height:210px;
+	border:1px solid #ccc;
+
+}
+.classify .shopim .name{
+	height:55px;width:198px;
+	background:rgba(232,232,232,0.5);
+	color:#000;
+	font-size:14px;
+	font-weight:bold;
+	line-height:55px;
+	text-align:center;
+	
+}
+
+.classify .shopim img{ 
+	margin-left:21px;
+	margin-top:15px;
+}
+
+.tabbedPanels {
+	position:absolute;
+	top:0;
+	right:0;
+	width: 980px;
+	margin:10px auto;
+	border:1px soild #000;
+}
+
+.tabbedPanels .tabs{
+	width:950px;
+	height:50px;
+	border-bottom:2px solid #000;
+	margin-bottom:20px;
+}
+
+.tabbedPanels .tabs li a{
+	width:100px;
+	height:40px;
+	margin-bottom:10px;
+	font-size:16px;
+	font-weight:bold;
+	margin-left:50px;
+	text-decoration:none;
+	color:#000;
+	line-height:40px;
+	text-align:center;
+}
+
+
+.panelContainer{
+	width:950px;
+	margin:0 auto;
+	margin-top:10px;
+}
+.panel .sell{
+	font-weight:bold;
+	font-size:20px;
+	color:#000;
+	text-decoration:underline;}
+.panel p{
+	margin-bottom:20px;
+}
+
+.panel .judge{
+	font-size:14px;
+	font-weight:bold;
+	color:#000;
+	
+}
+.panel .judge span{
+	font-size:14px;
+	margin-left:15px;
+}
+.panel .judge01{
+	height:200px;
+	position:relative;
+}
+.panel .judge01 .idimg{
+	width:80px;
+	}
+.panel .judge01 .write{
+	position:absolute;
+	top:20px;
+	left:80px;
+}
+
+
+
+
