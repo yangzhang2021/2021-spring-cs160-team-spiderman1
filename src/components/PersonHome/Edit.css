@@ -1,0 +1,216 @@
+.cont-main{
+    /* background: #f5f5f5; */
+    width: 1068px;
+    margin: 15px 0 30px 180px;
+    padding: 0 0 39px 0;
+    font: 12px/1.5 arial
+}
+.server-tab{
+    margin-top: 26px;
+}
+
+
+.server-tab-sub{
+    float: left;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.server-tab-sub-sub{
+    width: 680px;
+    padding: 10px;
+    float: left;
+    background:transparent;
+    height: 250px;
+    border: 2px; 
+    border-radius: 25px;
+}
+
+
+.nav-title{
+    margin-left: 30px;
+    color: var(--primary-black);
+}
+
+.nav-title:hover{
+    color: var(--light-blue);
+}
+
+.nav-bar-edit{
+    position: absolute;
+    font-size: 20px;
+    color: #686868;
+    float: left;
+    
+}
+.vertical-bar{
+    margin-left: 30px;
+    margin-right: 20px;
+    color: var(--light-blue);
+}
+
+.iblog{
+    text-align:center;
+    padding: 10px;
+    color: #F88600;
+    font-size: 28px;
+}
+
+.experience{
+    position: relative;
+    top: 10%;
+}
+
+.right-side-section-name{
+    font-size: 26px;
+    text-align: center;
+}
+
+
+.right-side-section-p{
+    font-size: 26px;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.img-holder{
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    margin: auto;
+}
+.user-profile-img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#userimage[type='file']{
+    display: none;
+}
+
+.label{
+    width: 100%;
+    display:inline;
+}
+
+.image-upload{
+    margin: auto;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    left: 5%;
+}
+.upload-icon{
+    font-size: 1rem;
+}
+
+.button-upload{
+    padding:0.35em 0.4em; 
+    border: 0.1em solid #FFFFFF; 
+    margin:-2em; 
+    border-radius:0.2em; 
+    box-sizing: border-box; 
+    text-decoration:none; 
+    color:dimgray; 
+    text-align:center; 
+    transition: all 0.2s;
+    cursor: pointer;
+    width:fit-content;
+    justify-content: center;
+    align-items: center;
+}
+.right-side-section-p2{
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid gray;
+    resize: none;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: auto;
+    padding: 8px;
+    width: 200px;
+}
+
+.work-div{
+    margin-top: -150px;
+    width: 680px;
+    padding:10px;
+    display: inline-block; 
+    background-color: #fff;
+    float: left;
+    border-bottom: 1px #ccc solid;
+    padding-bottom: 5px;
+    border: 2px; 
+    border-radius: 25px;
+    margin-left: 60px;
+}
+
+.work-div-p{
+    font-size: 26px;
+    text-align: left;
+}
+
+.product-section{
+    display:flex;
+    flex-direction: column;
+    column-gap: 10px;
+    justify-content: space-between;
+    float:left;
+    margin-left: 60px;
+}
+
+
+.product-section-product-name{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding:5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.price{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 5px 120px;
+    width:150px;
+    font-size: 12px;
+    padding:5px;
+}
+
+.product-section .label{
+    margin-left: -20px;
+}
+
+.product-description{
+    display: block;
+    margin-bottom: 40px;
+    border: 1px solid gray;
+    resize: none;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: auto;
+    height: auto;
+    padding: 8px;
+    width:350px;
+    margin-left: 20px;
+}
+.product-upload-form{
+    padding:10px;
+    display: inline-block; 
+    margin-top:-100px;
+    background-color: #fff;
+    float: left;
+}
+
+.upload-form{
+    position: relative;
+    left: 50%;
+}
+#productimage[type='file']{
+    display: none;
+}
