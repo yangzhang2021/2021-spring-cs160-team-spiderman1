@@ -10,7 +10,7 @@ public class SigninController {
     public final SiginService siginService;
 
     @PostMapping
-    public Long signin(@RequestBody SiginRequest request){
+    public SigninResponse signin(@RequestBody SiginRequest request){
         System.out.println("request = "+request);
         return siginService.signin(request);
     }

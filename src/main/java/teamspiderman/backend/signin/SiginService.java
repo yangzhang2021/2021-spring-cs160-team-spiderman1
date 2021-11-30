@@ -16,7 +16,7 @@ public class SiginService {
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
 
-    public Long signin(SiginRequest request){
+    public SigninResponse signin(SiginRequest request){
         boolean isValidEmail = emailValidator.
                 test(request.getEmail());
 

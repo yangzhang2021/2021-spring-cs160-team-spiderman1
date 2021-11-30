@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import teamspiderman.backend.signin.SigninResponse;
 
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -78,7 +78,7 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
-    public Long siginUser(String email, String password){
+    public SigninResponse siginUser(String email, String password){
 
         AppUser appUser = appUserRepository.findByEmail(email)
                 .orElseThrow(()->
@@ -94,9 +94,13 @@ public class AppUserService implements UserDetailsService {
         System.out.println("match"+encode.matches(password, userPassword));
         if(!encode.matches(password, userPassword)){
             throw new IllegalStateException(String.format(USER_NOT_FOUND_MSG, email));
+
         }
 
-        return appUser.getUserID();
+        return new SigninResponse(
+                appUser.getUserID(),true, appUser.getEmail(),
+                appUser.getFirstName(), appUser.getLastName(),
+                LocalDateTime.now());
     }
 
     public int enableAppUser(String email) {

@@ -12,7 +12,7 @@ img{
 .signUp{
     width: 480px;
     height: 530px;
-/*	background:#FFFFFF;*/
+	background:#FFFFFF;
     position: absolute;
     top: calc(50% - 200px);
     left: calc(50% - 200px);
@@ -34,6 +34,10 @@ input{
     font-size: 18px;
     background: transparent;
 }
+.err{
+    color:red;
+}
+
 .form{
     width: 365px;
     height: 45px;
@@ -50,10 +54,10 @@ input{
     margin-left: 80%;
 }
 
-#btn-signup{
+.btn-signup{
 	cursor: pointer;
-    width: 130px;
-    height: 45px;
+    width: 150px;
+    height: 50px;
     position: absolute;
     bottom: -300px;
    	margin-left: 340px;
@@ -76,8 +80,53 @@ a,a:hover{
 	top:104px;
     font-size: 10px;
 }
-#sign{
+.sign{
     position: absolute;
     bottom: 210px;
     left: 320px;
+    color: var(--light-green)
+}
+
+.password-info{
+    position: absolute;
+    top:147%;
+    left:30%;
+    cursor: pointer;
+    border:none;
+    background-color: white;
+    font-size: 15px;
+}
+.message{
+    position: absolute;
+    top:180%;
+    left: 80%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid gray;
+    border-radius: 10px;
+    z-index: 999;
+    background-color: rgba(241, 238, 238, 0.363);
+    width: 400px;
+    max-width: 80%;
+    padding: 10px 10px;
+}
+
+
+.message.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.close-button{
+    position: absolute;
+    left:92%;
+    cursor: pointer;
+    border:none;
+    outline:none;
+    background: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+
+}
+
+.password-message{
+    display: inline;
 }

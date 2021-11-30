@@ -40,7 +40,7 @@ input{
     width: 100px;
     margin: 25px auto;
 }
-#btn{
+.btn{
 	cursor: pointer;
     width: 80px;
     height: 45px;
@@ -66,8 +66,9 @@ a,a:hover{
 	top:104px;
     font-size: 12px;
 }
-#register{
+.register{
     position: absolute;
     bottom: 210px;
     left: 230px;
+    color: var(--light-green);
 }
