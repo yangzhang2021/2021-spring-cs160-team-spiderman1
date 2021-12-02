@@ -6,9 +6,9 @@ img{
 .login{
     width: 480px;
     height: 530px;
-/*	background:#FFFFFF;*/
+	background:#FFFFFF;
     position: absolute;
-    top: calc(50% - 200px);
+    top: calc(50% - 180px);
     left: calc(50% - 200px);
 	border-radius: 15px; 
 }
@@ -34,41 +34,41 @@ input{
     margin: 35px auto;
 }
 
-.h1{
-    text-align: center;
+.h1-signin{
+    text-align: center;;
     font-size: 25px;
     width: 100px;
     margin: 25px auto;
 }
 .btn{
 	cursor: pointer;
-    width: 80px;
-    height: 45px;
+    width: 70px;
+    height: 40px;
     position: absolute;
     bottom: -55px;
    	margin-left: 365px;
-    font-size: 16px;
+    font-size: 14px;
     background: transparent;
     border-radius: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     outline-style: none;
 	color:white;
-	background-color: rgb(108,156,147)
+	background-color: #0077b6;
 }
 
 a,a:hover{
     text-decoration: none;
     /* color: royalblue; */
 }
-.h2{
-	position:absolute;
-	left:145px;
+.h2-signin{
+    position:absolute;
+	left:160px;
 	top:104px;
     font-size: 12px;
 }
 .register{
     position: absolute;
-    bottom: 210px;
+    top: 100px;
     left: 230px;
-    color: var(--light-green);
+    color: #0077b6;
 }

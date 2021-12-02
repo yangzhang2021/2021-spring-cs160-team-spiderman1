@@ -4,7 +4,7 @@ import './Signup.css'
 import '../../../App.css'
 import axios from 'axios';
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
-
+import bg from '../../../img/bg.jpg'
 
 function Signup (){
 
@@ -61,13 +61,7 @@ function Signup (){
   const handleSubmit=(e)=>{
     e.preventDefault()
     //console.log(fname, lname, email, password, check)
-    // const user={
-    //   "firstName": fname,
-    //   "lastName": lname,  
-    //   "email": email,
-    //   "password": password
-    // }
-
+  
     if (fname && lname && email && password && check && !fnameError && !lnameError && !emailError && !passwordError && !checkError){
       console.log(fname, lname, email, password, check)
       axios.post(`http://localhost:8080/api/v1/registration`,
@@ -86,7 +80,7 @@ function Signup (){
         
         var confirm_win = window.confirm("click ok to your email to confirm!");
         if (confirm_win === true){
-          window.location.href ='http://localhost:1080/'
+          window.location.href ='http://localhost:1080/';
           //window.location.href ='../../PersonHome/PersonHome.js'
         }
         else{
@@ -103,12 +97,13 @@ function Signup (){
   }
 
     return (
-      <div>
-      {/* <img src="bg.jpg" alt="bg" /> */}
+      <div className='body'>
+      <img src={bg} alt="bg" />
         <div className="si">
             <div className="signUp">
-              <h1 className='h1'>Create an Account</h1>
-              <h2 className='h2'>Already have an account</h2>
+              <h1 className='h1-signup'>Create an Account</h1>
+              <h2 className='h2-signup'>Already have an account</h2>
+              <Link to='/signin' className="sign">Sign In</Link>
               <form className="form-box" onSubmit={handleSubmit}> 
                   <div className="form">
                       <label className="fname">First Name</label>
@@ -153,7 +148,6 @@ function Signup (){
                   </div>
                   <div className='overlay'></div>
                     <button className="btn-signup" type='submit' name='signup'>Create account</button>
-                    <Link to='/signin' className="sign">Sign In</Link>
                 </form>
               </div>
             </div>
@@ -162,4 +156,3 @@ function Signup (){
 }
 
 export default Signup
-
