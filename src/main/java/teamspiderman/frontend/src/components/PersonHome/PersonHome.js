@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './PersonHome.css' 
 import {NavLink} from 'react-router-dom'
-import Item from '../pages/Item/Item'
-
 import profileImg from '../../img/defaultUserImg.JPG'
 import productImg from '../../img/defaultproductimg.JPG'
 import PersonHomeProductsList from './PersonHomeProductsList';
@@ -40,13 +38,6 @@ function PersonHome(){
                 <PersonHomeProductsList products={iLists}></PersonHomeProductsList>
             )
         })
-    
-
-        //var email_divID= document.getElementById("email");
-        //email_divID.innerHTML+='<p>'+userInfo['email']+'</p>'
-
-       // var name_divID= document.getElementById("name");
-        //name_divID.innerHTML+='<p>'+userInfo['firstName'] + userInfo['lastName']+'</p>'
 
         return(
             <div className="cont-main">
@@ -93,7 +84,7 @@ function PersonHome(){
                             <p className='iblog'>iBlog</p>
                             <NavLink to='/edit' className='toEdit'>Edit my homepage -&gt;</NavLink>
                             <div className='right-side-section-div'>
-                                <p className='right-side-section-p username'>Lockon Stratos</p>
+                                <p className='right-side-section-p username'>{userInfo['firstName']}</p>
                                 <div className='img-holder'>
                                     <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
                                 </div>
@@ -115,57 +106,22 @@ function PersonHome(){
                                 <p className='comment-title'>Comment</p>
                                 <image className='image6' alt='iamge'/>
                                 <p className='comment-area'>No comment yet！</p>
-                            </div>
-                          
+                            </div>  
                         </div>
                             
 
 
-                    <div className='work-div-home'>
-                        <p className='work-div-p-home'>My Products</p>
-                        <div classNames='product_list' style={
-                            {display: 'grid', 
-                            gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr)', 
-                            marginLeft:'0px'}}>
-                            {renderProductlist}
-                    </div>
-                    </div>
-                    
-                    
-
-                    <div className='work-div-home'>
-                        <p className='work-div-p-home'>Sold</p>        
-                    </div>
-                    <div className='big-section-list-div'>
-                        <div className='big-section-list-div-div'>
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
+                        <div className='work-div-home'>
+                            <p className='work-div-p-home'>My Products</p>
+                            <div className='big-section-list-div'>
+                                <div classNames='product_list' style={
+                                    {display: 'grid', 
+                                    gridTemplateColumns:'repeat(auto-fill, minmax(200px, 1fr)', 
+                                    margin:'5px'}}>
+                                    {renderProductlist}
                                 </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
                             </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
-                            </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
-                            </div>
-                        </div>                   
-                    </div> 
+                        </div>
                 </div>
             </div>
         </div>

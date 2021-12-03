@@ -191,7 +191,7 @@
 
 .big-section-list-div{
     width: 680px;
-    padding:10px;
+    padding:5px;
     display: inline-block; 
     margin-top:0px;
     background-color: #fff;
@@ -206,7 +206,7 @@
 
 .big-section-list-div-div-item{
     float: left;
-    margin-left: 30px;
+    margin: 10px;
 }
 
 .big-section-list-div-div-item-img{
@@ -219,25 +219,19 @@
 }
 
 .big-section-list-div-div-item .item-price{
-    margin-left: 0px;
+    margin: 0px;
     margin-top: 10px;
     color: #f78642;
     font-size: 16px;
 }
 
-.big-section-list-div-div-item-rating{
+/* .big-section-list-div-div-item-rating{
     float: left; 
     margin-top: -5px; 
     margin-left: -10px;
-}
+} */
 
-.big-section-list-div-div-item-sold{
+/* .big-section-list-div-div-item-sold{
     float: right;
     margin-top: -5px;
-}
-
-.PersonHomeProductsLists{
-    float: left;
-    font-size: 100px;
-    list-style: outside none none;
-}
+} */
