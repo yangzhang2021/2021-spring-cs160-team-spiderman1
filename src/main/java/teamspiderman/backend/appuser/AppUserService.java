@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import teamspiderman.backend.signin.SigninResponse;
 
 
 import java.time.LocalDateTime;
@@ -78,7 +77,7 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
-    public SigninResponse siginUser(String email, String password){
+    public GetUserResponse siginUser(String email, String password){
 
         AppUser appUser = appUserRepository.findByEmail(email)
                 .orElseThrow(()->
@@ -97,13 +96,28 @@ public class AppUserService implements UserDetailsService {
 
         }
 
-        return new SigninResponse(
+        return new GetUserResponse(
                 appUser.getUserID(),true, appUser.getEmail(),
-                appUser.getFirstName(), appUser.getLastName(),
-                LocalDateTime.now());
+                appUser.getFirstName(), appUser.getLastName());
     }
 
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
+    }
+
+
+    public GetUserResponse updateEmailByuserID(Long userId, String email){
+
+        AppUser appUser = appUserRepository.findUserByuserID(userId)
+                .orElseThrow(()->
+                        new IllegalStateException(
+                                String.format(USER_NOT_FOUND_MSG, userId)));
+        appUserRepository.updateEmail(userId, email);
+        appUser.setEmail(email);
+        String newEmail = appUserRepository.getEmailByuserID(userId);
+
+        return new GetUserResponse(
+                appUser.getUserID(),true, newEmail,
+                appUser.getFirstName(), appUser.getLastName());
     }
 }

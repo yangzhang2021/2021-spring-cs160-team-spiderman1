@@ -28,6 +28,7 @@ public class AppUser implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private Long imgID;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
@@ -37,11 +38,13 @@ public class AppUser implements UserDetails {
                    String lastName,
                    String email,
                    String password,
+                   Long imgID,
                    AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.imgID = imgID;
         this.appUserRole = appUserRole;
     }
 
@@ -91,6 +94,7 @@ public class AppUser implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", imgID='" + imgID + '\'' +
                 ", appUserRole=" + appUserRole +
                 ", locked=" + locked +
                 ", enabled=" + enabled +

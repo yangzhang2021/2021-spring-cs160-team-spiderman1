@@ -1,4 +1,4 @@
- import axios from 'axios';
+import axios from 'axios';
 import React from 'react';
 import './Edit.css' 
 import {NavLink} from 'react-router-dom'
@@ -7,12 +7,14 @@ import defaultUserImg from '../../img/defaultUserImg.JPG'
 import {MdOutlineFileUpload} from 'react-icons/md'
 import TextareaAutosize from 'react-textarea-autosize';
 import defaultProductImg from '../../img/defaultproductimg.JPG'
+import AddProduct from './AddProduct';
 
 export default class Edit extends React.Component{
+    
 
     state = {
         profileImg :defaultUserImg,
-        contact:'',
+        email:'',
         username:'',
         experiences:';',
         productname:'',
@@ -21,6 +23,7 @@ export default class Edit extends React.Component{
         description:''
 
     }
+    
 
     // set data
      imageHandler=(e)=>{
@@ -45,7 +48,7 @@ export default class Edit extends React.Component{
         reader.readAsDataURL(e.target.files[0])//[0] file details
     }
     valueHandler =(e)=>{
-        console.log(e.target.value)
+        console.log("e.target.value", e.target.value)
         this.setState({
         [e.target.id]: e.target.value
         })
@@ -55,35 +58,36 @@ export default class Edit extends React.Component{
         headers:{'content-type':'multipart/form-data'}
     }
     // upload handler
-    contactUploadHandler=() =>{
+    emailUploadHandler=() =>{    
+        var userInfo = JSON.parse(localStorage.getItem('userInfo'))
         const fd = new FormData()
-        const username='user name' // TODO: temp var need to set up later
-        fd.append('contact', this.state.contact);
-        for(var v of fd.entries()){
-            console.log(v)
-        }
+       
+        const emailRegExp = RegExp(
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )
+        if(emailRegExp.test(this.state.email)){
 
-        axios.post(`http://localhost:8080/api/v1/${username}/contact`, fd, this.config) // path to get user image
-        .then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
-    experiencesUploadHandler=() =>{
-        const fd = new FormData()
-        const username='user name' // TODO: temp var need to set up later
-        fd.append('experiences', this.state.experiences);
-        for(var v of fd.entries()){
-            console.log(v)
+            fd.append('email', this.state.email);
+            for(var v of fd.entries()){
+                console.log("v ",v)
+            }
+
+
+            console.log("email again ", fd.get('email'))
+            axios.put(
+                `http://localhost:8080/api/v1/edit_user/edit_email/${userInfo["userID"]}/?email=${fd.get('email')}`
+
+            ) // path to get user image
+            .then(res=>{
+                console.log(res)
+                localStorage.setItem('userInfo', JSON.stringify(res.data))
+            }).catch(err=>{
+                console.log(err)
+            })
         }
-        axios.post(`http://localhost:8080/api/v1/${username}/experiences`, fd, this.config) // path to get user image
-        .then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
+        
     }
+    
 
     imageUploadHandler=()=>{
         const fd = new FormData()
@@ -101,28 +105,28 @@ export default class Edit extends React.Component{
         })
     }
 
+    productUploadHandler = (e) =>{
+        e.preventDefault();
 
-    productUploadHandler =(e)=>{
-        e.preventDefault()
-        const fd = new FormData()
-        fd.append('productname', this.state.productname)
-        fd.append('productimage', this.state.productImg, this.state.productImg.name)
-        fd.append('price', this.target.price)
-        fd.append('description', this.target.description)
-        const username='user name' // TODO: temp var need to set up later
-        for(var v of fd.entries()){
-            console.log(v)
+        if(this.state.name === "" || this.state.price ===""){
+            alert("product name and price can not be empty.")
+            return
         }
-        axios.post(`http://localhost:8080/api/v1/${username}/productDetail`, fd, this.config) // path to get user image
-        .then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
-        
+        this.props.addProductHandler(this.state) // state contain all info
+        console.log(this.state);
+        this.setState({profileImg :defaultUserImg,
+            email:'',
+            username:'',
+            experiences:';',
+            productname:'',
+            productImg: defaultProductImg,
+            price:'',
+            description:''})
+        // console.log(this.props)
+        this.props.history.push("/")
     }
     render(){
-        const {profileImg, contact, experiences, productname, productImg, price, description} = this.state
+        const {profileImg, email, experiences, productname, productImg, price, description} = this.state
 
     // return UserProfile.map((UserProfile, index) =>{    
     return(
@@ -138,8 +142,6 @@ export default class Edit extends React.Component{
                             <span className='vertical-bar'>|</span>
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signin'>My Products</NavLink>
                             <span className='vertical-bar'>|</span>
-                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signup'>Sold</NavLink>
-                            
                         </div>
                     </div>	
                             
@@ -147,7 +149,7 @@ export default class Edit extends React.Component{
                         <p className='iblog'>Edit Profile</p>
 
                         <div className='right-side-section-div'>
-                            <p className='right-side-section-name'>user name</p>
+                            <p className='right-side-section-name'>{JSON.parse(localStorage.getItem('userInfo'))['firstName']}</p>
                             <div className='img-holder'>
                                 <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
                             </div>
@@ -163,27 +165,15 @@ export default class Edit extends React.Component{
                     
                         <div className='right-side-section-div '>
                             <p className='right-side-section-p'>Contact</p>
-                            <TextareaAutosize className='right-side-section-p2' id='contact'
-                                name='contact'
-                                placeholder='Enter your contact'
-                                value={contact}
+                            <TextareaAutosize className='right-side-section-p2' id='email'
+                                name='email'
+                                placeholder='Enter your email'
+                                value={email}
                                 onChange={this.valueHandler}
                             />
-                            <button className='button-upload' onClick={this.contactUploadHandler}>Upload</button>
-                        </div>  
-
-                        <div className='right-side-section-div experience'>
-                            <p className='right-side-section-p'>Work experiences</p>
-                            <TextareaAutosize className='right-side-section-p2' id='experiences'
-                                name='experiences'
-                                placeholder='Enter your experiences'
-                                value={experiences}
-                                onChange={this.valueHandler}
-                            />
-                            <button className='button-upload' onClick={this.experiencesUploadHandler}>Upload</button>
-                        </div>  
-                </div>
-                        
+                            <button className='button-upload' onClick={this.emailUploadHandler}>Upload</button>
+                        </div>
+                </div>             
                 <div className='work-div'>
                     <p className='work-div-p'>Add a product</p>        
                 </div>
@@ -194,7 +184,7 @@ export default class Edit extends React.Component{
                         <div className='img-holder'>
                             <img src={productImg} alt='product' id='user-profile-img' className='user-profile-img'/>
                         </div>
-                        <input type='file' name='image-upload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
+                        <input type='file' name='imageupload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
                         <div className='label'>
                             <label htmlFor='productimage' className='image-upload'>
                                 <div className='upload-icon'> <MdOutlineFileUpload /></div>

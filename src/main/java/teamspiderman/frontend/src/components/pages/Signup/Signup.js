@@ -69,7 +69,8 @@ function Signup (){
       "firstName":fname,
       "lastName": lname,
       "email": email,
-      "password": password
+      "password": password,
+      "imgID":0
     }) // user sign up path
       .then(res => {
         console.log(res);

@@ -1,14 +1,10 @@
 package teamspiderman.backend.signin;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import teamspiderman.backend.appuser.AppUserService;
+import teamspiderman.backend.appuser.GetUserResponse;
 import teamspiderman.backend.registration.EmailValidator;
-import teamspiderman.backend.registration.Token.ConfirmationToken;
-
-import java.time.LocalDateTime;
 
 @Service
 @AllArgsConstructor
@@ -16,7 +12,7 @@ public class SiginService {
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
 
-    public SigninResponse signin(SiginRequest request){
+    public GetUserResponse signin(SiginRequest request){
         boolean isValidEmail = emailValidator.
                 test(request.getEmail());
 

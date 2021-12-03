@@ -22,6 +22,9 @@ function Navbar() {
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
+            
+            </li>
+            <li className='nav-item'>
             <NavLink activeStyle={{ color:"#0077b6"}} exact to='/' className='nav-links'  onClick={closeMobileMenu}> Products</NavLink>
             </li>
             {/* <li className='nav-item'>

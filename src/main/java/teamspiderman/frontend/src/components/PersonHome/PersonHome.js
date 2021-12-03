@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import './PersonHome.css' 
 import {NavLink} from 'react-router-dom'
 import profileImg from '../../img/defaultUserImg.JPG'
-import productImg from '../../img/defaultproductimg.JPG'
 import PersonHomeProductsList from './PersonHomeProductsList';
 
 
@@ -84,7 +83,7 @@ function PersonHome(){
                             <p className='iblog'>iBlog</p>
                             <NavLink to='/edit' className='toEdit'>Edit my homepage -&gt;</NavLink>
                             <div className='right-side-section-div'>
-                                <p className='right-side-section-p username'>{userInfo['firstName']}</p>
+                                <p className='right-side-section-p-username'>{userInfo['firstName']}</p>
                                 <div className='img-holder'>
                                     <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
                                 </div>
@@ -94,8 +93,8 @@ function PersonHome(){
                         
                             <div className='right-side-section-div-home' id='contatct'>
                                 <p className='right-side-section-p' >Contact</p>
-                                <p className='right-side-section-p2-home'  id='name'>Name:{userInfo['firstName'] + userInfo['lastName']}</p>
-                                <p className='right-side-section-p2-home'  id='email'>Email:{userInfo['email']}</p>
+                                <p className='right-side-section-p2-home'  id='name'>Name: {userInfo['firstName'] +' '+ userInfo['lastName']}</p>
+                                <p className='right-side-section-p2-home'  id='email'>Email: {userInfo['email']}</p>
                             </div>
                             <div className='right-side-section-div-home'>
                                 <p className='right-side-section-p'>experiences</p>
