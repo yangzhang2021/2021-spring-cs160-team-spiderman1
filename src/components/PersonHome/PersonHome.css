@@ -235,3 +235,9 @@
     float: right;
     margin-top: -5px;
 }
+
+.PersonHomeProductsLists{
+    float: left;
+    font-size: 100px;
+    list-style: outside none none;
+}

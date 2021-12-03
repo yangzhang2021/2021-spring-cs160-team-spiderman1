@@ -7,6 +7,7 @@ import defaultUserImg from '../../img/defaultUserImg.JPG'
 import {MdOutlineFileUpload} from 'react-icons/md'
 import TextareaAutosize from 'react-textarea-autosize';
 import defaultProductImg from '../../img/defaultproductimg.JPG'
+import AddProduct from './AddProduct';
 
 export default class Edit extends React.Component{
 
@@ -102,24 +103,47 @@ export default class Edit extends React.Component{
     }
 
 
-    productUploadHandler =(e)=>{
-        e.preventDefault()
-        const fd = new FormData()
-        fd.append('productname', this.state.productname)
-        fd.append('productimage', this.state.productImg, this.state.productImg.name)
-        fd.append('price', this.target.price)
-        fd.append('description', this.target.description)
-        const username='user name' // TODO: temp var need to set up later
-        for(var v of fd.entries()){
-            console.log(v)
-        }
-        axios.post(`http://localhost:8080/api/v1/${username}/productDetail`, fd, this.config) // path to get user image
-        .then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
+    // productUploadHandler =(e)=>{
+    //     e.preventDefault()
         
+      
+    //     const fd = new FormData()
+    //     fd.append('productname', this.state.productname)
+    //     fd.append('productimage', this.state.productImg, this.state.productImg.name)
+    //     fd.append('price', this.target.price)
+    //     fd.append('description', this.target.description)
+    //     const username='user name' // TODO: temp var need to set up later
+    //     for(var v of fd.entries()){
+    //         console.log(v)
+    //     }
+    //     axios.post(`http://localhost:8080/api/v1/${username}/productDetail`, fd, this.config) // path to get user image
+    //     .then(res=>{
+    //         console.log(res)
+    //     }).catch(err=>{
+    //         console.log(err)
+    //     })
+        
+    // }
+
+    productUploadHandler = (e) =>{
+        e.preventDefault();
+
+        if(this.state.name === "" || this.state.price ===""){
+            alert("product name and price can not be empty.")
+            return
+        }
+        this.props.addProductHandler(this.state) // state contain all info
+        console.log(this.state);
+        this.setState({profileImg :defaultUserImg,
+            contact:'',
+            username:'',
+            experiences:';',
+            productname:'',
+            productImg: defaultProductImg,
+            price:'',
+            description:''})
+        // console.log(this.props)
+        this.props.history.push("/")
     }
     render(){
         const {profileImg, contact, experiences, productname, productImg, price, description} = this.state
@@ -138,7 +162,7 @@ export default class Edit extends React.Component{
                             <span className='vertical-bar'>|</span>
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signin'>My Products</NavLink>
                             <span className='vertical-bar'>|</span>
-                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signup'>Sold</NavLink>
+                           
                             
                         </div>
                     </div>	
@@ -183,7 +207,35 @@ export default class Edit extends React.Component{
                             <button className='button-upload' onClick={this.experiencesUploadHandler}>Upload</button>
                         </div>  
                 </div>
-                        
+
+                {/* <AddProduct />   */}
+
+                {/* <div className='work-div'>
+                    <p className='work-div-p'>Add a product</p>        
+                </div>
+                <form className='product-upload-form' onSubmit={this.productUploadHandler}>
+                    <div className='product-section'>
+                        <input className='product-section-product-name' type='text' id='productname' 
+                        name='productname' placeholder='Enter product name' value={this.state.productname} onChange={(e) => this.setState({productname:e.target.value})}/>
+                        <div className='img-holder'>
+                            <img src={productImg} alt='product' id='user-profile-img' className='user-profile-img'/>
+                        </div>
+                        <input type='file' name='imageupload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
+                        <div className='label'>
+                            <label htmlFor='productimage' className='image-upload'>
+                                <div className='upload-icon'> <MdOutlineFileUpload /></div>
+                                <p>Choose your product photo</p>
+                            </label>
+                        </div>
+                        <input type='text' id='price' name='price' placeholder='enter price' className='price' value={this.state.price} onChange={(e) => this.setState({price:e.target.value})}/>
+                        <TextareaAutosize className='product-description' id='description'
+                                name='description'
+                                placeholder='Enter product description'
+                                value={this.state.description} onChange={(e) => this.setState({description:e.target.value})}
+                            />
+                        <button className='button-upload upload-form' >Upload</button>
+                    </div>                  
+                </form>  */}
                 <div className='work-div'>
                     <p className='work-div-p'>Add a product</p>        
                 </div>
@@ -194,7 +246,7 @@ export default class Edit extends React.Component{
                         <div className='img-holder'>
                             <img src={productImg} alt='product' id='user-profile-img' className='user-profile-img'/>
                         </div>
-                        <input type='file' name='image-upload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
+                        <input type='file' name='imageupload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
                         <div className='label'>
                             <label htmlFor='productimage' className='image-upload'>
                                 <div className='upload-icon'> <MdOutlineFileUpload /></div>

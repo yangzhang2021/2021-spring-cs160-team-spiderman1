@@ -16,7 +16,7 @@ function Navbar() {
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             Intangible
         </Link>
-        <Search />
+        {/* <Search /> */}
         <div className='menu-icon' onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
         </div>

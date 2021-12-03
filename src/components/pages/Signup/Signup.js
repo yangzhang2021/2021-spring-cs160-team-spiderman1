@@ -60,7 +60,7 @@ function Signup (){
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-    console.log(fname, lname, email, password, check)
+    //console.log(fname, lname, email, password, check)
   
     if (fname && lname && email && password && check && !fnameError && !lnameError && !emailError && !passwordError && !checkError){
       console.log(fname, lname, email, password, check)
@@ -81,7 +81,7 @@ function Signup (){
         var confirm_win = window.confirm("click ok to your email to confirm!");
         if (confirm_win === true){
           window.location.href ='http://localhost:1080/';
-          window.location.href ='../../PersonHome/PersonHome.js'
+          //window.location.href ='../../PersonHome/PersonHome.js'
         }
         else{
           alert("please confirm your registration in 15 mins to complete the registration")

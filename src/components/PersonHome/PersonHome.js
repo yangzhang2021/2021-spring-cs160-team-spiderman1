@@ -2,24 +2,52 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './PersonHome.css' 
 import {NavLink} from 'react-router-dom'
+import Item from '../pages/Item/Item'
 
 import profileImg from '../../img/defaultUserImg.JPG'
 import productImg from '../../img/defaultproductimg.JPG'
+import PersonHomeProductsList from './PersonHomeProductsList';
 
 
 
 function PersonHome(){
+    
+    console.log(window.location.href.indexOf("#reloaded"))
+    if(window.location.href.indexOf("#reloaded")==-1){
+        window.location.href=window.location.href+"#reloaded"
+        window.location.reload()
+    }
+    
+    var userInfo = JSON.parse(localStorage.getItem('userInfo'))
 
-    const [ReturnData, setReturnData] = useState([])
-    // useEffect(() => {
-    //    axios.get("http://localhost:8080/api/v1/user-profile").then(res=>{ // path retrieve user image
-    //        console.log(res)
-    //        setReturnData(res.data)
-    //    })
-    // }, [])
+    if(userInfo["signin"] ===true){
 
+        console.log("userInfo = ", userInfo)
+        //const [ReturnData, setReturnData] = useState([])
 
-  //  return ReturnData.map((userProfile, index)=>{
+        axios.get(`http://localhost:8080/api/v1/iList/${userInfo["userID"]}/iLists`)
+        .then(res=>{ 
+            console.log(res)
+            localStorage.setItem('iLists', JSON.stringify(res.data))
+        })
+        
+        var iLists = JSON.parse(localStorage.getItem('iLists'))
+        console.log(iLists)
+
+        const renderProductlist = iLists.map((iLists)=>{
+            console.log(iLists)
+            return (
+                <PersonHomeProductsList products={iLists}></PersonHomeProductsList>
+            )
+        })
+    
+
+        //var email_divID= document.getElementById("email");
+        //email_divID.innerHTML+='<p>'+userInfo['email']+'</p>'
+
+       // var name_divID= document.getElementById("name");
+        //name_divID.innerHTML+='<p>'+userInfo['firstName'] + userInfo['lastName']+'</p>'
+
         return(
             <div className="cont-main">
                 <div className="server-tab" >
@@ -53,11 +81,12 @@ function PersonHome(){
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} exact to ='/personhome'>My Homepage</NavLink>
                             <span className='vertical-bar'>|</span>
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signin'>My Products</NavLink>
-                            <span className='vertical-bar'>|</span>
-                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signup'>Sold</NavLink>
+                            {/* <span className='vertical-bar'>|</span>
+                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signup'>Sold</NavLink> */}
                             
                             </div>
                         </div>	
+                        
                      
 
                         <div className='right-side'>
@@ -72,15 +101,15 @@ function PersonHome(){
                                 <p className='right-side-user-p2'>Welcome to my homepage</p>
                             </div>
                         
-                            <div className='right-side-section-div-home'>
-                                <p className='right-side-section-p'>Contact</p>
-                                <p className='right-side-section-p2-home'>Phone: XXX-XXX-XXXX<br/><br/>
-                                Email: Celestial_Being@gmail.com</p>
+                            <div className='right-side-section-div-home' id='contatct'>
+                                <p className='right-side-section-p' >Contact</p>
+                                <p className='right-side-section-p2-home'  id='name'>Name:{userInfo['firstName'] + userInfo['lastName']}</p>
+                                <p className='right-side-section-p2-home'  id='email'>Email:{userInfo['email']}</p>
                             </div>
                             <div className='right-side-section-div-home'>
                                 <p className='right-side-section-p'>experiences</p>
-                                <p className='right-side-section-p2-home'>Phone: XXX-XXX-XXXX<br/><br/>
-                                Email: Celestial_Being@gmail.com</p>
+                                <p className='right-side-section-p2-home'>Email:</p>
+                                
                             </div>      
                             <div className='comment-section'>
                                 <p className='comment-title'>Comment</p>
@@ -90,84 +119,31 @@ function PersonHome(){
                           
                         </div>
                             
-                    <div className='work-div-home'>
-                        <p className='work-div-p-home'>My Products</p>        
-                    </div>
-                    <div className='big-section-list-div'>
-                        <div className='big-section-list-div-div'>
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                
-                                <p className='big-section-list-div-div-item-price'>$200</p>
-                                <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
-                                <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
-                            </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                
-                                <p className='big-section-list-div-div-item-price'>$200</p>
-                                <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
-                                <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
-                            </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                
-                                <p className='big-section-list-div-div-item-price'>$200</p>
-                                <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
-                                <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
-                            </div>
-                        </div>                   
-                    </div> 
+
 
                     <div className='work-div-home'>
-                        <p className='work-div-p-home'>Sold</p>        
+                        <p className='work-div-p-home'>My Products</p>
+                        <div classNames='product_list' style={
+                            {display: 'grid', 
+                            gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr)', 
+                            marginLeft:'0px'}}>
+                            {renderProductlist}
                     </div>
-                    <div className='big-section-list-div'>
-                        <div className='big-section-list-div-div'>
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
-                            </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
-                            </div>
-                            
-                            <div className='big-section-list-div-div-item'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title'>GN Holster Bit</p>
-                                <span className='item-price'>$180</span>
-                                <del className='discount'>$200<br/>10%off</del>
-                            </div>
-                        </div>                   
                     </div> 
                 </div>
             </div>
         </div>
         )
-        
-//    })
+    }
+    else{
+        var url = '../../Signin' 
+        window.location.href =url
+        return null
+    }
+    
+
 }
+
+
 export default PersonHome
+
