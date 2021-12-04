@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -28,7 +29,8 @@ public class AppUser implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private Long imgID;
+    //private Long imgID;
+    private String userProfileImageLink;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
@@ -38,13 +40,13 @@ public class AppUser implements UserDetails {
                    String lastName,
                    String email,
                    String password,
-                   Long imgID,
+                   String userProfileImageLink,
                    AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.imgID = imgID;
+        this.userProfileImageLink = userProfileImageLink; //s3 Key
         this.appUserRole = appUserRole;
     }
 
@@ -94,10 +96,15 @@ public class AppUser implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", imgID='" + imgID + '\'' +
+                ", userProfileImageLink='" + userProfileImageLink + '\'' +
                 ", appUserRole=" + appUserRole +
                 ", locked=" + locked +
                 ", enabled=" + enabled +
                 '}';
     }
+
+    public Optional<String> getUserProfileImageLink() {
+        return Optional.ofNullable(userProfileImageLink);
+    }
+
 }

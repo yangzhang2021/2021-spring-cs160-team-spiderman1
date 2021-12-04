@@ -32,7 +32,7 @@ function PersonHome(){
         console.log(iLists)
 
         const renderProductlist = iLists.map((iLists)=>{
-            console.log(iLists)
+            console.log("iLists", iLists)
             return (
                 <PersonHomeProductsList products={iLists}></PersonHomeProductsList>
             )
@@ -85,7 +85,7 @@ function PersonHome(){
                             <div className='right-side-section-div'>
                                 <p className='right-side-section-p-username'>{userInfo['firstName']}</p>
                                 <div className='img-holder'>
-                                    <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
+                                    <img src={`http://localhost:8080/api/v1/edit_user/${userInfo["userID"]}/profileimage/download`} alt='user' id='user-profile-img' className='user-profile-img'/>
                                 </div>
                                 {/* <image src={`http://localhost:8080/api/v1/user-profile/${userProfile}/image/download`} /> */}
                                 <p className='right-side-user-p2'>Welcome to my homepage</p>

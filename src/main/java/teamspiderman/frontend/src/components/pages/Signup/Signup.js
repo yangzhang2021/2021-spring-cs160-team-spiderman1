@@ -70,7 +70,7 @@ function Signup (){
       "lastName": lname,
       "email": email,
       "password": password,
-      "imgID":0
+      "userProfileImageLink":null
     }) // user sign up path
       .then(res => {
         console.log(res);

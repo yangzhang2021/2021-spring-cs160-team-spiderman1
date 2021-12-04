@@ -14,24 +14,27 @@ export default class Edit extends React.Component{
 
     state = {
         profileImg :defaultUserImg,
+        profileImgFile:'',
         email:'',
         username:'',
-        experiences:';',
         productname:'',
         productImg: defaultProductImg,
+        productImageFile:'',
         price:'',
         description:''
-
     }
     
 
     // set data
      imageHandler=(e)=>{
-        console.log(e.target.files[0])
+        console.log("check profile image: ", e.target.files[0])
+        console.log("e= ", e)
         const reader = new FileReader()
+        
         reader.onload=()=>{
             if(reader.readyState===2){
                 this.setState({profileImg:reader.result})
+                this.setState({profileImgFile: e.target.files[0]})
             }
         }
         reader.readAsDataURL(e.target.files[0])//[0] file details
@@ -43,10 +46,12 @@ export default class Edit extends React.Component{
         reader.onload=()=>{
             if(reader.readyState===2){
                 this.setState({productImg:reader.result})
+                this.setState({productImageFile: e.target.files[0]})
             }
         }
         reader.readAsDataURL(e.target.files[0])//[0] file details
     }
+
     valueHandler =(e)=>{
         console.log("e.target.value", e.target.value)
         this.setState({
@@ -90,43 +95,85 @@ export default class Edit extends React.Component{
     
 
     imageUploadHandler=()=>{
+        var userInfo = JSON.parse(localStorage.getItem('userInfo'))
         const fd = new FormData()
         console.log(this.state.profileImg, this.state.profileImg.name)
-        fd.append('profileimage', this.state.profileImg, this.state.profileImg.name)
+        fd.append('profileImgFile', this.state.profileImgFile)
         for(var v of fd.entries()){
             console.log(v)
         }
-        const username='user name' // TODO: temp var need to set up later
-        axios.post(`http://localhost:8080/api/v1/${username}/profileimage`, fd, this.config) // path to get user image
+        console.log("file1: ", fd)
+        axios.post(
+        `http://localhost:8080/api/v1/edit_user/${userInfo["userID"]}/profileImgFile/upload`,
+        fd,
+        {
+            header: {"Content-Type": "multipart/form-data"}
+        }) // path to get user image
         .then(res=>{
+            console.log("file uploaded successfully")
             console.log(res)
+            
         }).catch(err=>{
             console.log(err)
         })
     }
 
     productUploadHandler = (e) =>{
+        var userInfo = JSON.parse(localStorage.getItem('userInfo'))
         e.preventDefault();
-
-        if(this.state.name === "" || this.state.price ===""){
+        
+        if(this.state.productname === "" || this.state.price ===""){
             alert("product name and price can not be empty.")
             return
         }
-        this.props.addProductHandler(this.state) // state contain all info
+
+        axios.post(
+            `http://localhost:8080/api/v1/iList/${userInfo["userID"]}/addIList`,
+         {
+            "time": null,
+            "title": this.state.productname,
+            "productImageLink": null,
+            "content": this.state.description,
+            "price": this.state.price,
+            "userID": userInfo["userID"]
+         }) // path to get user image
+            .then(res=>{
+
+                console.log("product added successfully")
+                console.log(res)
+                var newProductId = res.data["id"]
+
+                const fd = new FormData()
+                fd.append('productImageFile', this.state.productImageFile)
+
+                console.log("product: ", fd)
+                axios.post(
+                    `http://localhost:8080/api/v1/iList/${userInfo["userID"]}/${newProductId}/productImageFile/upload`,
+                    fd,
+                    {
+                        header: {"Content-Type": "multipart/form-data"}
+                }) // path to get user image
+                .then(res=>{
+                    console.log("product image uploaded successfully")
+                    console.log(res)
+                }).catch(err=>{
+                        console.log(err)})   
+            }).catch(err=>{
+                console.log(err)
+            })
+        //this.props.addProductHandler(this.state) // state contain all info
         console.log(this.state);
-        this.setState({profileImg :defaultUserImg,
-            email:'',
-            username:'',
-            experiences:';',
+        this.setState(
+            {
             productname:'',
             productImg: defaultProductImg,
             price:'',
             description:''})
-        // console.log(this.props)
-        this.props.history.push("/")
+        //this.props.history.push("/")
     }
+
     render(){
-        const {profileImg, email, experiences, productname, productImg, price, description} = this.state
+        const {profileImg, profileImgFile, email , productname, productImg, productImageFile, price, description} = this.state
 
     // return UserProfile.map((UserProfile, index) =>{    
     return(
