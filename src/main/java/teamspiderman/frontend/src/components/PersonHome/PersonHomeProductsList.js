@@ -5,7 +5,7 @@ import productImg from '../../img/defaultproductimg.JPG'
  
 const PersonHomeProductsList = (props)=>{
 
-    const {content, id, price, productImageLink, time, title, userID} = props.products
+    const {content, id, price, productImageLink, time, title, userID, userName} = props.products
     return(
             
             <div className='big-section-list-div-div'>

@@ -1,6 +1,8 @@
 package teamspiderman.backend.IList;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import teamspiderman.backend.Img.ImgService;
@@ -33,6 +35,17 @@ public class IListService {
 
     public IList addIList(IList iList) {
         return iListRepo.save(iList);
+    }
+
+    public List<IList> findAll(){
+        if(iListRepo.count()>=1){
+            System.out.println("here1");
+            return iListRepo.findAll();
+        }else{
+            System.out.println("here2");
+            throw new IllegalStateException("no iList found");
+        }
+
     }
 
     public List<IList> getAllIListsByuserID(Long id) {
@@ -108,7 +121,5 @@ public class IListService {
         return iList.getProductImageLink()
                 .map(key -> fileStore.download(path, key))
                 .orElse(new byte[0]);
-
-
     }
 }

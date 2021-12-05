@@ -22,8 +22,7 @@ public class IListController {
     private final AppUserRepository appUserRepository;
 
     @PostMapping("/{userId}/addIList")
-    public ResponseEntity<IList> addIList(
-            @RequestBody IList iList){
+    public ResponseEntity<IList> addIList(@RequestBody IList iList){
 
         Long user_id = iList.getUserID();
         java.sql.Date sqlDate=new java.sql.Date(new java.util.Date().getTime());
@@ -51,11 +50,18 @@ public class IListController {
         return new ResponseEntity<>(iLists, HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public List<IList> findAllI(){
+        List<IList> iLists = iListService.findAll();
+        return iLists;
+    }
+
     @GetMapping("/{iListId}")
     public ResponseEntity<IList> getIListById (@PathVariable("iListId") Long iListId){
         IList iList = iListService.getIListById(iListId);
         return new ResponseEntity<>(iList, HttpStatus.OK);
     }
+
 
 
     @PostMapping(

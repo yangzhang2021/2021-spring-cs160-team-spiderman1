@@ -24,10 +24,11 @@ public class IList implements Serializable {
     private String content;
     private Float price;
     private Long userID;
+    private String userName;
 
     public IList(Date time,
                  String title, String productImageLink,String content,
-                 Float price, Long userID) {
+                 Float price, Long userID, String userName) {
 
         this.time = time;
         this.title = title;
@@ -35,6 +36,7 @@ public class IList implements Serializable {
         this.content = content;
         this.price = price;
         this.userID = userID;
+        this.userName = userName;
     }
 
     @Override
@@ -47,6 +49,7 @@ public class IList implements Serializable {
                 ", content='" + content + '\'' +
                 ", price='" + price + '\'' +
                 ", userID=" + userID +
+                ", userName=" + userName +
                 '}';
     }
 

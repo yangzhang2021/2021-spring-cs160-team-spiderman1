@@ -54,6 +54,7 @@ function Signin(){
         console.log(signinInfo)
         var url = '../../PersonHome/PersonHome/'     //+signinInfo['userID']
         window.location.href =url
+        alert("Login Successfully")
 
         
       })

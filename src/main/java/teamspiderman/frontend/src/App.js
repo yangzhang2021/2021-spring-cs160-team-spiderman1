@@ -26,9 +26,14 @@ function App () {
  
   // retrive product
     const retriveProducts = async() =>{
-      const response = await api.get("/products");
-      console.log(response)
-      return response.data
+      // const response = await api.get("/products");
+      // console.log(response)
+      // return response.data
+
+      console.log("try to get products2")
+      const res = await axios.get(`http://localhost:8080/api/v1/iList/all`)
+      console.log("res", res)
+      return res.data
     }
  
   const addProductHandler = async (product) => {
@@ -55,10 +60,7 @@ function App () {
    }
  }
   useEffect(() => {
-    // local storage
-   //  const retriveProducts = JSON.parse(localStorage.getItem(LOCAL_STORAGE))
-   //  if(retriveProducts) setProducts(retriveProducts)
- 
+    
    const getAllProducts = async () =>{
      const allProducts = await retriveProducts();
      if(allProducts) setProducts(allProducts)
@@ -77,8 +79,7 @@ function App () {
          <Router>
            <Switch>
              <Route path='/personhome/' extact component={PersonHome}/>
-             {/* <Route path='/edit' extact component={Edit}/> */}
-             {/* <Route path='/edit' component={() => (<Edit addProductHandler={addProductHandler} />)} />         */}
+             
              <Route path='/edit' 
              render={(props) => (
                <Edit 

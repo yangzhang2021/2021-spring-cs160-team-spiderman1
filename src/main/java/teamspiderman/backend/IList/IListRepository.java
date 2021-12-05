@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface IListRepository extends JpaRepository<IList, Long> {
 
     void deleteIListById(Long id);
+    List<IList> findAll();
     Optional<IList> getIListById(Long id);
     Optional<List<IList>> getAllIListsByuserID(Long id);
 

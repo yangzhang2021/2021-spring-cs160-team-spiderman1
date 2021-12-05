@@ -135,7 +135,8 @@ export default class Edit extends React.Component{
             "productImageLink": null,
             "content": this.state.description,
             "price": this.state.price,
-            "userID": userInfo["userID"]
+            "userID": userInfo["userID"],
+            "userName": userInfo['firstName']+" "+userInfo['lastName']
          }) // path to get user image
             .then(res=>{
 
@@ -168,7 +169,8 @@ export default class Edit extends React.Component{
             productname:'',
             productImg: defaultProductImg,
             price:'',
-            description:''})
+            description:''
+        })
         //this.props.history.push("/")
     }
 
