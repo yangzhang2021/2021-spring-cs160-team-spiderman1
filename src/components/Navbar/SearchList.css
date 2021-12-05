@@ -1,8 +1,14 @@
+
 .search-input{
     position: absolute;
     top : 25px;
     left: 300px;
     z-index: 999;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 300px;
+    height:35px;
 }
 .list{
     width: 100%;
@@ -15,4 +21,28 @@
     float: left;
     font-size: 100px;
     list-style: outside none none;
+}
+.prompt{
+    padding-top:2px;
+    padding-left:10px;
+    font-size: 14px;
+    text-decoration: none;
+    border:none;
+  }
+.button-i{
+    color:gray;
+    display: flex;
+    float:right;
+    margin-right:20px;
+    margin-top:-24px;
+    border:none;
+    text-decoration: none;
+    background: transparent;
+    font-size: 18px;
+  }
+
+@media screen and (max-width: 960px) {
+    .search{
+        display: none;
+    }
 }

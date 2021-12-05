@@ -1,4 +1,3 @@
-// import '../pages/Discoverlist/Discoverlist.css'
 import './SearchList.css'
 import Item from '../pages/Item/Item'
 import {FiSearch} from 'react-icons/fi'

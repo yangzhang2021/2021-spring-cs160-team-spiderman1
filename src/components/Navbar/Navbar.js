@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import Search from './Search';
 function Navbar() {
   const [click, setClick] = useState(false);
 
@@ -16,7 +15,6 @@ function Navbar() {
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             Intangible
         </Link>
-        {/* <Search /> */}
         <div className='menu-icon' onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
         </div>

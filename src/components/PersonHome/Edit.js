@@ -7,7 +7,6 @@ import defaultUserImg from '../../img/defaultUserImg.JPG'
 import {MdOutlineFileUpload} from 'react-icons/md'
 import TextareaAutosize from 'react-textarea-autosize';
 import defaultProductImg from '../../img/defaultproductimg.JPG'
-import AddProduct from './AddProduct';
 
 export default class Edit extends React.Component{
 
@@ -147,8 +146,7 @@ export default class Edit extends React.Component{
     }
     render(){
         const {profileImg, contact, experiences, productname, productImg, price, description} = this.state
-
-    // return UserProfile.map((UserProfile, index) =>{    
+   
     return(
         <div className="cont-main">
             <div className="server-tab" >
@@ -160,8 +158,7 @@ export default class Edit extends React.Component{
                             <span className='vertical-bar'>|</span>
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} exact to ='/personhome'>My Homepage</NavLink>
                             <span className='vertical-bar'>|</span>
-                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signin'>My Products</NavLink>
-                            <span className='vertical-bar'>|</span>
+            
                            
                             
                         </div>
@@ -207,35 +204,6 @@ export default class Edit extends React.Component{
                             <button className='button-upload' onClick={this.experiencesUploadHandler}>Upload</button>
                         </div>  
                 </div>
-
-                {/* <AddProduct />   */}
-
-                {/* <div className='work-div'>
-                    <p className='work-div-p'>Add a product</p>        
-                </div>
-                <form className='product-upload-form' onSubmit={this.productUploadHandler}>
-                    <div className='product-section'>
-                        <input className='product-section-product-name' type='text' id='productname' 
-                        name='productname' placeholder='Enter product name' value={this.state.productname} onChange={(e) => this.setState({productname:e.target.value})}/>
-                        <div className='img-holder'>
-                            <img src={productImg} alt='product' id='user-profile-img' className='user-profile-img'/>
-                        </div>
-                        <input type='file' name='imageupload' id='productimage' accept='image/*' onChange={this.productimageHandler}/>
-                        <div className='label'>
-                            <label htmlFor='productimage' className='image-upload'>
-                                <div className='upload-icon'> <MdOutlineFileUpload /></div>
-                                <p>Choose your product photo</p>
-                            </label>
-                        </div>
-                        <input type='text' id='price' name='price' placeholder='enter price' className='price' value={this.state.price} onChange={(e) => this.setState({price:e.target.value})}/>
-                        <TextareaAutosize className='product-description' id='description'
-                                name='description'
-                                placeholder='Enter product description'
-                                value={this.state.description} onChange={(e) => this.setState({description:e.target.value})}
-                            />
-                        <button className='button-upload upload-form' >Upload</button>
-                    </div>                  
-                </form>  */}
                 <div className='work-div'>
                     <p className='work-div-p'>Add a product</p>        
                 </div>
