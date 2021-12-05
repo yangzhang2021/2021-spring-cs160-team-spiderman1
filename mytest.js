@@ -41,15 +41,4 @@ context('Actions', () => {
       .click()
       .url().should('include', 'http://localhost:3000/signup');
   })
-
-  it('check links', () => {
-    cy.visit('http://localhost:3000/')
-    cy.contains('Home').click;
-    cy.contains('Discover').click;
-    cy.visit('http://localhost:3000/discover')
-    cy.contains('iList').click;
-    cy.contains('About').click;
-    cy.contains('Sign In').click;
-    cy.contains('Sign Up').click;
-  })
 })
