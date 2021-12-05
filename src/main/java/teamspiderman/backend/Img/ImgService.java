@@ -2,9 +2,15 @@ package teamspiderman.backend.Img;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static org.apache.http.entity.ContentType.*;
 
 @Service
 public class ImgService {
@@ -54,5 +60,26 @@ public class ImgService {
     @Transactional
     public void deleteImg(Long id){
         imgRepo.deleteImgById(id);
+    }
+
+    public void isImage(MultipartFile file) {
+        if(!Arrays.asList(IMAGE_JPEG.getMimeType(),
+                IMAGE_PNG.getMimeType(),
+                IMAGE_GIF.getMimeType()).contains(file.getContentType())){
+            throw new IllegalStateException("File muse be an image [" + file.getContentType() + "]");
+        }
+    }
+
+    public void isFileEmpty(MultipartFile file) {
+        if(file.isEmpty()){
+            throw new IllegalStateException("can not upload empty file[" + file.getSize() + "]");
+        }
+    }
+
+    public Map<String, String> extractMetadata(MultipartFile file) {
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("Content-Type", file.getContentType());
+        metadata.put("Content-Length", String.valueOf(file.getSize()));
+        return metadata;
     }
 }

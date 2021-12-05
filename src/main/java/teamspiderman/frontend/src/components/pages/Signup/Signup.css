@@ -1,83 +1,124 @@
 
-/* body {
+.body {
     width: 100%;
-    height: 100vh;
-	color:white;
-} */
+    height: 100%;
+	color:black;
+}
 img{
 	max-width:100%;
 	height:100%;
 }
 
 .signUp{
-    width: 480px;
-    height: 530px;
-/*	background:#FFFFFF;*/
+    width: 500px;
+    height: 635px;
+	background:white;
     position: absolute;
     top: calc(50% - 200px);
     left: calc(50% - 200px);
-	border-radius: 15px; 
+	border-radius: 15px;
 }
 
-.form-box{
-    width: 100%;
-    height: 200px;
-    position: absolute;
-    top: 25%;
+.form{
+    border-bottom: 1px solid gray;
+    box-sizing: border-box;
+    margin: 200px 0;
 }
-input{
-    width: 350px;
-    height: 30px;
-    outline-style: none;
-    border: none;
-    border-bottom: 1px solid white;
-    font-size: 18px;
-    background: transparent;
+.err{
+    color:red;
 }
+
 .form{
     width: 365px;
     height: 45px;
     margin: 35px auto;
 }
 
-.h1{
-    display: inline;
-    position:relative;
-    left: 140px;
+.h1-signup{
+    margin-top: 30px;
     text-align: center;
     font-size: 25px;
     width: 100%;
-    margin-left: 80%;
 }
 
-#btn-signup{
+.btn-signup{
 	cursor: pointer;
-    width: 130px;
-    height: 45px;
+    width: 140px;
+    height: 40px;
     position: absolute;
     bottom: -300px;
    	margin-left: 340px;
-    font-size: 16px;
-    background: transparent;
+    font-size: 14px;
+    /* background: transparent; */
     border-radius: 20px;
-    border: 1px solid black;
-    outline-style: none;
+    /* border: 1px solid black; */
+    /* outline-style: none; */
 	color:white;
-	background-color: rgb(108,156,147)
+	background-color:#0077b6;
 }
 
 a,a:hover{
     text-decoration: none;
     /* color: royalblue; */
 }
-.h2{
+.h2-signup{
 	position:absolute;
-	left:80px;
+	left:140px;
 	top:104px;
-    font-size: 10px;
+    font-size: 12px;
 }
-#sign{
+.sign{
     position: absolute;
-    bottom: 210px;
-    left: 320px;
+    top: 100px;
+    left: 300px;
+    color: #0077b6;
+}
+
+.form-box{ 
+    display: inline-block;
+    margin-top: -30px;
+   
+}
+.password-info{
+    position: absolute;
+    top:147%;
+    left:30%;
+    cursor: pointer;
+    border:none;
+    background-color:white;
+    font-size: 15px;
+}
+.message{
+    position: absolute;
+    top:180%;
+    left: 80%;
+    transform: translate(-50%, -50%) scale(0);
+    /* border: 1px solid gray; */
+    border-radius: 10px;
+    z-index: 999;
+    background-color: rgba(241, 238, 238, 0.8);
+    width: 400px;
+    max-width: 80%;
+    padding: 10px 10px;
+}
+
+
+.message.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.close-button{
+    position: absolute;
+    left:92%;
+    cursor: pointer;
+    border:none;
+    outline:none;
+    background: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+
+}
+
+.password-message{
+    display: inline;
 }

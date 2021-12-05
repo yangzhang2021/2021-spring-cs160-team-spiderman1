@@ -91,12 +91,6 @@
     color: var(--primary-black);
 }
 
-.line{
-    border-top: 0.5px solid var(--light-gray);
-    position: relative;
-    top:5px;
-}
-
 .end-section{
     margin: 100px 0;
     display: flex;

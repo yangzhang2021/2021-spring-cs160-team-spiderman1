@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Optional;
 
 @Setter
 @Getter
@@ -17,32 +18,43 @@ public class IList implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private Long imgID;
     private Date time;
     private String title;
+    private String productImageLink;
     private String content;
+    private Float price;
     private Long userID;
+    private String userName;
 
-    public IList(Long imgID, Date time,
-                 String title, String content,
-                 Long userID) {
+    public IList(Date time,
+                 String title, String productImageLink,String content,
+                 Float price, Long userID, String userName) {
 
-        this.imgID = imgID;
         this.time = time;
         this.title = title;
+        this.productImageLink = productImageLink;
         this.content = content;
+        this.price = price;
         this.userID = userID;
+        this.userName = userName;
     }
 
     @Override
     public String toString() {
         return "IList{" +
                 "id=" + id +
-                ", imgID=" + imgID +
                 ", time=" + time +
                 ", title='" + title + '\'' +
+                ", productImageLink='" + productImageLink + '\'' +
                 ", content='" + content + '\'' +
+                ", price='" + price + '\'' +
                 ", userID=" + userID +
+                ", userName=" + userName +
                 '}';
+    }
+
+
+    public Optional<String> getProductImageLink() {
+        return Optional.ofNullable(productImageLink);
     }
 }

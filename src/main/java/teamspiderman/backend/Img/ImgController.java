@@ -25,7 +25,7 @@ public class ImgController {
     public ResponseEntity<List<Img>> findByuserID(
             @PathVariable("userId") Long userId){
         List<Img> imgs= imgService.findByuserID(userId);
-        return new ResponseEntity<>(imgs, HttpStatus.CREATED);
+        return new ResponseEntity<>(imgs, HttpStatus.OK);
     }
 
 
@@ -33,14 +33,14 @@ public class ImgController {
     public ResponseEntity<List<Img>> findByiBlogID(
             @PathVariable("iBlogId") Long iBlogId){
         List<Img> imgs= imgService.findByiBlogID(iBlogId);
-        return new ResponseEntity<>(imgs, HttpStatus.CREATED);
+        return new ResponseEntity<>(imgs, HttpStatus.OK);
     }
 
     @RequestMapping(path="/iList/{iListId}", method = RequestMethod.GET, params="imgs")
     public ResponseEntity<List<Img>> findByiListID(
             @PathVariable("iListId") Long iListId){
         List<Img> imgs= imgService.findByiListID(iListId);
-        return new ResponseEntity<>(imgs, HttpStatus.CREATED);
+        return new ResponseEntity<>(imgs, HttpStatus.OK);
     }
 
 

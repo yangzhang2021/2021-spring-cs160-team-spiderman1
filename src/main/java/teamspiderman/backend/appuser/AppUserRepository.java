@@ -22,4 +22,20 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
             "SET a.enabled = TRUE WHERE a.email = ?1")
     int enableAppUser(String email);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE AppUser a " +
+            "SET a.email = ?2 WHERE a.userID = ?1")
+    int updateEmail(Long userID, String email);
+
+    @Transactional
+    @Query("SELECT a.email " +
+            "FROM AppUser a WHERE a.userID = ?1")
+    String getEmailByuserID(Long userID);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE AppUser a " +
+            "SET a.userProfileImageLink = ?2 WHERE a.userID = ?1")
+    int updateUserProfileImageLink(Long userID, String userProfileImageLink);
 }

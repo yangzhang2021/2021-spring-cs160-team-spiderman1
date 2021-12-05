@@ -37,10 +37,12 @@ public class RegistrationService {
                         request.getLastName(),
                         request.getEmail(),
                         request.getPassword(),
+                        request.getUserProfileImageLink(),
                         AppUserRole.USER
 
                 )
         );
+
 
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
         emailSender.send(
@@ -69,7 +71,7 @@ public class RegistrationService {
 
         confirmationTokenService.setConfirmedAt(token);
         appUserService.enableAppUser(confirmationToken.getAppUser().getEmail());
-        return "confirmed";
+        return "<a href=\"" + "http://localhost:3000/signin" + "\">confirmed</a>";
     }
 
     private String buildEmail(String name, String link) {
