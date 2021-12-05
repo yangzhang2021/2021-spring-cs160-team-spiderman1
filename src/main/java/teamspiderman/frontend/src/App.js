@@ -9,7 +9,7 @@ import PersonHome from './components/PersonHome/PersonHome'
 import Edit from'./components/PersonHome/Edit'
 import axios from 'axios';
 import SearchList from './components/Navbar/SearchList'
-import api from "./components/api/product"
+
 
 axios.defaults.headers.common['Authorization'] =  'Bearer' + localStorage.getItem('token')
 axios.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true'
@@ -36,16 +36,16 @@ function App () {
       return res.data
     }
  
-  const addProductHandler = async (product) => {
-    console.log(product)
-    const request ={
-      id:uuid(), // no id
-      ...product
-    }
-    const response = await api.post("/products", request)
-    console.log(response)
-    setProducts([...products_list, response.data]);
-  };
+  // const addProductHandler = async (product) => {
+  //   console.log(product)
+  //   const request ={
+  //     id:uuid(), // no id
+  //     ...product
+  //   }
+  //   const response = await api.post("/products", request)
+  //   console.log(response)
+  //   setProducts([...products_list, response.data]);
+  // };
  
   const searchHandler = (search) =>{
    setSearch(search)
@@ -83,8 +83,8 @@ function App () {
              <Route path='/edit' 
              render={(props) => (
                <Edit 
-               {...props}
-               addProductHandler={addProductHandler}
+              //  {...props}
+              //  addProductHandler={addProductHandler}
                />
              )} />
              <div >

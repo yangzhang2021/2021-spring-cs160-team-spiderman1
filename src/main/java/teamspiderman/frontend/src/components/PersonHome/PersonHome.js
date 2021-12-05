@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './PersonHome.css' 
 import {NavLink} from 'react-router-dom'
-import profileImg from '../../img/defaultUserImg.JPG'
 import PersonHomeProductsList from './PersonHomeProductsList';
 
 

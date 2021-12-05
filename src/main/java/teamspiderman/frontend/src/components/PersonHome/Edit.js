@@ -7,7 +7,7 @@ import defaultUserImg from '../../img/defaultUserImg.JPG'
 import {MdOutlineFileUpload} from 'react-icons/md'
 import TextareaAutosize from 'react-textarea-autosize';
 import defaultProductImg from '../../img/defaultproductimg.JPG'
-import AddProduct from './AddProduct';
+
 
 export default class Edit extends React.Component{
     
