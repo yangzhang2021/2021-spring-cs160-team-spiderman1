@@ -9,7 +9,6 @@ import PersonHome from './components/PersonHome/PersonHome'
 import Edit from'./components/PersonHome/Edit'
 import axios from 'axios';
 import SearchList from './components/Navbar/SearchList'
-import api from "./components/api/Product"
 
 axios.defaults.headers.common['Authorization'] =  'Bearer' + localStorage.getItem('token')
 axios.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true'
@@ -49,7 +48,7 @@ function App () {
 
  // retrive product
    const retriveProducts = async() =>{
-     const response = await api.get("/products");
+     const response = axios.get("");
      console.log(response)
      return response.data
    }
@@ -60,7 +59,7 @@ function App () {
      id:uuid(), // no id
      ...product
    }
-   const response = await api.post("/products", request)
+   const response = axios.post("", request)
    console.log(response)
    setProducts([...products_list, response.data]);
  };
