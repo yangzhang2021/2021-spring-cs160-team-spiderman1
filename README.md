@@ -8,7 +8,7 @@ zizhaoguan           #54658087          Zizhao Guan
 Yancheng-Chu         #67170053          Yancheng Chu
 GJLiu8               #91092005          Guojian Liu
 
-master branch test
+The release branch is: zizhao_dev_branch
 
 Frontend automation test:
 Cypress automation test on github under : https://github.com/yangzhang2021/2021-spring-cs160-team-spiderman1/tree/frontend mytest.js 
