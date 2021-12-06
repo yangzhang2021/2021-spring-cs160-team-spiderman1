@@ -22,9 +22,6 @@ function Navbar() {
             <li className='nav-item'>
             <NavLink activeStyle={{ color:"#0077b6"}} exact to='/' className='nav-links'  onClick={closeMobileMenu}> Products</NavLink>
             </li>
-            {/* <li className='nav-item'>
-            <NavLink activeStyle={{ color:"#0077b6"}} exact to='/about' className='nav-links' onClick={closeMobileMenu}>About</NavLink>
-            </li> */}
             <li className='nav-item'>
             <NavLink activeStyle={{ color:"#0077b6"}} exact to='/signin' className='nav-links' onClick={closeMobileMenu}> Sign In</NavLink>
             </li>

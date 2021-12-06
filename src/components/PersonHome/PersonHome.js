@@ -1,12 +1,9 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './PersonHome.css' 
 import {NavLink} from 'react-router-dom'
-import Item from '../pages/Item/Item'
-
+import PersonHomeProductsList from "./PersonHomeProductsList"
 import profileImg from '../../img/defaultUserImg.JPG'
-import productImg from '../../img/defaultproductimg.JPG'
-import PersonHomeProductsList from './PersonHomeProductsList';
 
 
 
@@ -23,9 +20,8 @@ function PersonHome(){
     if(userInfo["signin"] ===true){
 
         console.log("userInfo = ", userInfo)
-        //const [ReturnData, setReturnData] = useState([])
 
-        axios.get(`http://localhost:8080/api/v1/iList/${userInfo["userID"]}/iLists`)
+        axios.get('')
         .then(res=>{ 
             console.log(res)
             localStorage.setItem('iLists', JSON.stringify(res.data))
@@ -41,12 +37,6 @@ function PersonHome(){
             )
         })
     
-
-        //var email_divID= document.getElementById("email");
-        //email_divID.innerHTML+='<p>'+userInfo['email']+'</p>'
-
-       // var name_divID= document.getElementById("name");
-        //name_divID.innerHTML+='<p>'+userInfo['firstName'] + userInfo['lastName']+'</p>'
 
         return(
             <div className="cont-main">
@@ -81,9 +71,6 @@ function PersonHome(){
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} exact to ='/personhome'>My Homepage</NavLink>
                             <span className='vertical-bar'>|</span>
                             <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signin'>My Products</NavLink>
-                            {/* <span className='vertical-bar'>|</span>
-                            <NavLink className='nav-title' activeStyle={{color:'#0077b6'}} extact to ='/signup'>Sold</NavLink> */}
-                            
                             </div>
                         </div>	
                         
@@ -97,7 +84,7 @@ function PersonHome(){
                                 <div className='img-holder'>
                                     <img src={profileImg} alt='user' id='user-profile-img' className='user-profile-img'/>
                                 </div>
-                                {/* <image src={`http://localhost:8080/api/v1/user-profile/${userProfile}/image/download`} /> */}
+                               
                                 <p className='right-side-user-p2'>Welcome to my homepage</p>
                             </div>
                         

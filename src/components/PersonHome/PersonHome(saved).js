@@ -15,12 +15,7 @@ function PersonHome(){
         userInfo = JSON.parse(localStorage.getItem('userInfo'))
         console.log("userInfo=", userInfo)
         if(userInfo["signin"] ===true){
-            // axios.get(`http://localhost:8080/api/v1/iBlog/${userInfo["userID"]}/iBlogs`)
-            // .then(res=>{ 
-            //     console.log(res)
-            //     localStorage.setItem('iBlogs', JSON.stringify(res.data))
-            // })
-
+           
             axios.get(`http://localhost:8080/api/v1/iList/${userInfo["userID"]}/iLists`)
             .then(res=>{ 
                 console.log(res)
@@ -35,16 +30,7 @@ function PersonHome(){
 
             var name_divID= document.getElementById("name");
             name_divID.innerHTML+='<p>'+userInfo['firstName'] + userInfo['lastName']+'</p>'
-            //var article1_divID= document.getElementById("article1");
-            //var article2_divID= document.getElementById("article2");
-            // if(iBlogs.length>=2){
-                
-            // }else if(iBlogs.length==1){
-    
-            // }else{
-            // //article1_divID.style.visibility = 'hidden'
-            // //article2_divID.style.visibility = 'hidden'   
-            // }
+       
        
             var product1_divID= document.getElementById("product1");
             var product2_divID= document.getElementById("product2");

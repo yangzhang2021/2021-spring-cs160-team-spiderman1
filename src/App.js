@@ -18,30 +18,7 @@ axios.defaults.headers.common['Content-Type'] = 'application/json'
 
 function App () {
 
-  // state = {}
-  // componentDidMount = () =>{
-
-    // let mheaders = new Headers();
-    // mheaders.append('Content-Type', 'application/json');
-    // mheaders.append('Accept', 'application/json');
-
-    // mheaders.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-    // mheaders.append('Access-Control-Allow-Credentials', 'true');
-
-    // mheaders.append('GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS');
-
-    // axios.get('http://localhost:8080/api/v1/user') // user personal page
-    // .then(res =>{
-    //     this.setState({
-    //         user:res.data
-    //     })
-    // }).catch(err =>{
-    //     console.log(err)
-    // })
   
-// }
-
- const LOCAL_STORAGE = "products";   
  const [products_list, setProducts] = useState([]);
  const [search, setSearch] = useState("");
  const [searchResults, setSearchResults] =  useState([]);
@@ -56,7 +33,7 @@ function App () {
  const addProductHandler = async (product) => {
    console.log(product)
    const request ={
-     id:uuid(), // no id
+     id:uuid(), 
      ...product
    }
    const response = axios.post("", request)
@@ -77,9 +54,6 @@ function App () {
   }
 }
  useEffect(() => {
-   // local storage
-  //  const retriveProducts = JSON.parse(localStorage.getItem(LOCAL_STORAGE))
-  //  if(retriveProducts) setProducts(retriveProducts)
 
   const getAllProducts = async () =>{
     const allProducts = await retriveProducts();
@@ -90,7 +64,7 @@ function App () {
 
 
  useEffect(() => {
-  //  localStorage.setItem(LOCAL_STORAGE, JSON.stringify(products_list))
+ 
  }, [products_list])
 
 
@@ -99,8 +73,6 @@ function App () {
         <Router>
           <Switch>
             <Route path='/personhome/' extact component={PersonHome}/>
-            {/* <Route path='/edit' extact component={Edit}/> */}
-            {/* <Route path='/edit' component={() => (<Edit addProductHandler={addProductHandler} />)} />         */}
             <Route path='/edit' 
             render={(props) => (
               <Edit 
@@ -118,9 +90,7 @@ function App () {
                 term = {search}
                 searchKeyWord ={searchHandler}
                 />
-              )}/>
-              
-              {/* <Route path='/' exact component={() => (<SearchList  products={products_list} />)} /> */}
+              )}/>            
               <Route path='/signup' exact component={Signup}/>
               <Route path='/signin' exact component={Signin}/>
             </div>  

@@ -3,9 +3,6 @@ import {Link} from 'react-router-dom'
 import './Item.css'
 const Item =(props)=>{
 
-    // TODO, fetch user img and user name of this product
-    // TODO. add user homepage when click productname
-
     const {productname, productImg, profileImg, username, price} = props.product
 
     return(

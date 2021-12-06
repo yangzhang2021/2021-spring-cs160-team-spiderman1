@@ -57,13 +57,13 @@ export default class Edit extends React.Component{
     // upload handler
     contactUploadHandler=() =>{
         const fd = new FormData()
-        const username='user name' // TODO: temp var need to set up later
+      
         fd.append('contact', this.state.contact);
         for(var v of fd.entries()){
             console.log(v)
         }
 
-        axios.post(`http://localhost:8080/api/v1/${username}/contact`, fd, this.config) // path to get user image
+        axios.post('', fd, this.config) // path to get user image
         .then(res=>{
             console.log(res)
         }).catch(err=>{
@@ -72,12 +72,11 @@ export default class Edit extends React.Component{
     }
     experiencesUploadHandler=() =>{
         const fd = new FormData()
-        const username='user name' // TODO: temp var need to set up later
         fd.append('experiences', this.state.experiences);
         for(var v of fd.entries()){
             console.log(v)
         }
-        axios.post(`http://localhost:8080/api/v1/${username}/experiences`, fd, this.config) // path to get user image
+        axios.post('', fd, this.config) // path to get user image
         .then(res=>{
             console.log(res)
         }).catch(err=>{
@@ -92,8 +91,8 @@ export default class Edit extends React.Component{
         for(var v of fd.entries()){
             console.log(v)
         }
-        const username='user name' // TODO: temp var need to set up later
-        axios.post(`http://localhost:8080/api/v1/${username}/profileimage`, fd, this.config) // path to get user image
+       
+        axios.post('', fd, this.config) 
         .then(res=>{
             console.log(res)
         }).catch(err=>{
@@ -102,29 +101,7 @@ export default class Edit extends React.Component{
     }
 
 
-    // productUploadHandler =(e)=>{
-    //     e.preventDefault()
-        
-      
-    //     const fd = new FormData()
-    //     fd.append('productname', this.state.productname)
-    //     fd.append('productimage', this.state.productImg, this.state.productImg.name)
-    //     fd.append('price', this.target.price)
-    //     fd.append('description', this.target.description)
-    //     const username='user name' // TODO: temp var need to set up later
-    //     for(var v of fd.entries()){
-    //         console.log(v)
-    //     }
-    //     axios.post(`http://localhost:8080/api/v1/${username}/productDetail`, fd, this.config) // path to get user image
-    //     .then(res=>{
-    //         console.log(res)
-    //     }).catch(err=>{
-    //         console.log(err)
-    //     })
-        
-    // }
-
-    productUploadHandler = (e) =>{
+    productUploadHandler =(e)=>{
         e.preventDefault();
 
         if(this.state.name === "" || this.state.price ===""){
@@ -141,8 +118,28 @@ export default class Edit extends React.Component{
             productImg: defaultProductImg,
             price:'',
             description:''})
-        // console.log(this.props)
-        this.props.history.push("/")
+        // console.log(this.props)        
+      
+        const fd = new FormData()
+        fd.append('productname', this.state.productname)
+        fd.append('productimage', this.state.productImg, this.state.productImg.name)
+        fd.append('price', this.target.price)
+        fd.append('description', this.target.description)
+    
+        for(var v of fd.entries()){
+            console.log(v)
+        }
+        axios.post('', fd, this.config) // path to get user image
+        .then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
+        
+    }
+
+    productUploadHandler = (e) =>{
+       
     }
     render(){
         const {profileImg, contact, experiences, productname, productImg, price, description} = this.state

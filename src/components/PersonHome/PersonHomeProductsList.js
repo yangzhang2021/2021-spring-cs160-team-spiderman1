@@ -18,27 +18,6 @@ const PersonHomeProductsList = (props)=>{
                                 <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
                             </div>
                             
-                            {/* <div className='big-section-list-div-div-item' id = 'product2'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title' id = 'product_title2'></p>
-                                
-                                <p className='big-section-list-div-div-item-price' id = 'product_des2'></p>
-                                <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
-                                <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
-                            </div> */}
-                            
-                            {/* <div className='big-section-list-div-div-item' id = 'product3'>
-                                <div className='img-holder'>
-                                    <img src={productImg} alt='user' id='user-profile-img' className='user-profile-img'/>
-                                </div>
-                                <p className='big-section-list-div-div-item-title' id = 'product_title3'></p>
-                                
-                                <p className='big-section-list-div-div-item-price' id = 'product_des3'></p>
-                                <dl className='big-section-list-div-div-item-rating'>Rate：90%</dl>
-                                <dl className='big-section-list-div-div-item-sold'>Sold：1</dl>
-                            </div> */}
                         </div>                   
                     </div> 
     )
