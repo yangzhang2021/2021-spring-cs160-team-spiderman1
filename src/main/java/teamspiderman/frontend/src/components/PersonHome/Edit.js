@@ -89,6 +89,7 @@ export default class Edit extends React.Component{
                 alert("Email has been changed!")
             }).catch(err=>{
                 console.log(err)
+                alert("Fail to change email...")
             })
         }
         
@@ -117,6 +118,7 @@ export default class Edit extends React.Component{
             
         }).catch(err=>{
             console.log(err)
+            alert("Fail to update image...")
         })
     }
 
@@ -144,6 +146,7 @@ export default class Edit extends React.Component{
 
                 console.log("product added successfully")
                 console.log(res)
+                alert("Product has been added!")
                 var newProductId = res.data["id"]
 
                 const fd = new FormData()
@@ -159,7 +162,7 @@ export default class Edit extends React.Component{
                 .then(res=>{
                     console.log("product image uploaded successfully")
                     console.log(res)
-                    alert("Product has been added!")
+                    alert("product image uploaded successfully!")
                 }).catch(err=>{
                         console.log(err)})   
             }).catch(err=>{

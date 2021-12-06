@@ -93,6 +93,7 @@ function Signup (){
       })
       .catch(err =>{
         console.log(err)
+        alert("The email may have been token!!!")
       })
     }
   }

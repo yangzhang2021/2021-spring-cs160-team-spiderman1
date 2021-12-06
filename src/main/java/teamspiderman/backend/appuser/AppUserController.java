@@ -24,9 +24,13 @@ public class AppUserController {
                 .findUserByuserID(userId)
                 .isPresent();
 
+        boolean sameEmailExists = appUserRepository
+                .findByEmail(email)
+                .isPresent();
+        
         System.out.println("userID = "+userId);
-        if(!userExists){
-            throw new IllegalStateException("user doesn't exist");
+        if(!userExists || sameEmailExists){
+            throw new IllegalStateException("something wrong!!!");
         }
         return appUserService.updateEmailByuserID(userId, email);
     }
