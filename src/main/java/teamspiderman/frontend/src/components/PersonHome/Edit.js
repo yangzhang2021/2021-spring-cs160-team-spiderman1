@@ -86,6 +86,7 @@ export default class Edit extends React.Component{
             .then(res=>{
                 console.log(res)
                 localStorage.setItem('userInfo', JSON.stringify(res.data))
+                alert("Email has been changed!")
             }).catch(err=>{
                 console.log(err)
             })
@@ -112,6 +113,7 @@ export default class Edit extends React.Component{
         .then(res=>{
             console.log("file uploaded successfully")
             console.log(res)
+            alert("User profile image has been uploaded!")
             
         }).catch(err=>{
             console.log(err)
@@ -157,6 +159,7 @@ export default class Edit extends React.Component{
                 .then(res=>{
                     console.log("product image uploaded successfully")
                     console.log(res)
+                    alert("Product has been added!")
                 }).catch(err=>{
                         console.log(err)})   
             }).catch(err=>{

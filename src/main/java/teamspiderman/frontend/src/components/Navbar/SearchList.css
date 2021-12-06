@@ -1,7 +1,8 @@
+
 .search-input{
     position: absolute;
     top : 25px;
-    left: 300px;
+    right: 300px;
     z-index: 999;
     box-sizing: border-box;
     border: 1px solid lightgray;
@@ -21,7 +22,6 @@
     font-size: 100px;
     list-style: outside none none;
 }
-
 .prompt{
     padding-top:2px;
     padding-left:10px;
