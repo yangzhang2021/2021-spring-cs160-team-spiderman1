@@ -3,8 +3,8 @@
   --light-yellow: #E9C46A;
   --light-orange:#E9A56C;
   --light-blue:#0077b6;
-  --light-gray:#707070;
-  --primary-black:#3E353A;
+  --light-gray:hsl(0, 1%, 17%);
+  --primary-black:#292828;
   --primary-white:#fff;
   --secondary-green:rgb(37, 119, 101);
 }
@@ -115,7 +115,7 @@
   }
 
   .nav-menu.active {
-    background:var(--purple);
+    background:var(--primary-white);
     left: 0;
     opacity: 1;
     height: 80%;
@@ -127,11 +127,11 @@
     padding: 2rem;
     width: 100%;
     display: table;
-    color: white;
+    color:var(--primary-black);
   }
 
   .nav-links:hover {
-    color: var(--primary-white);
+    color: var(--primary-black);
     transform: scale(1.2);
     transition: all 0.3s ease;
   }

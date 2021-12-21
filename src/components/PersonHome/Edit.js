@@ -52,7 +52,7 @@ export default class Edit extends React.Component{
     }
 
     config = {
-        headers:{'content-type':'multipart/form-data'}
+        header:{'content-type':'multipart/form-data'}
     }
     // upload handler
     contactUploadHandler=() =>{
